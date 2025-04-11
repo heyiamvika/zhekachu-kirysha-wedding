@@ -3,6 +3,7 @@ import { PAGES } from 'app/lib/pages';
 
 import StartPage from './StartPage';
 import LocationPage from './LocationPage';
+import TransportationPage from './TransportationPage';
 
 export const renderStep = (currentStep: Step) => {
   switch (currentStep) {
@@ -11,7 +12,7 @@ export const renderStep = (currentStep: Step) => {
     case PAGES.LOCATION_STEP:
       return <LocationPage />;
     case PAGES.TRANSPORTATION_STEP:
-      return <div>Step2</div>;
+      return <TransportationPage />;
     case PAGES.HOTEL_STEP:
       return <div>Step3</div>;
     case PAGES.ALLERGIES_STEP:
