@@ -1,5 +1,6 @@
 import { Step } from 'app/lib/definitions';
-import StartPage from './start';
+import StartPage from './StartPage';
+import StepOne from './StepOne';
 
 export const renderStep = (
   currentStep: Step,
@@ -7,50 +8,42 @@ export const renderStep = (
   prevStep: () => void
 ) => {
   switch (currentStep) {
-    case 'start':
-      return <StartPage onNext={nextStep} onPrev={prevStep} />;
     case 1:
-      return (
-        <div>
-          Step 1<button onClick={nextStep}>Next step</button>
-        </div>
-      );
+      return <StartPage onNext={nextStep} />;
     case 2:
+      return <StepOne onNext={nextStep} onPrev={prevStep} />;
+    case 3:
       return (
         <div>
           Step2 <button onClick={nextStep}>Next step</button>
         </div>
       );
-    case 3:
+    case 4:
       return (
         <div>
           Step3 <button onClick={nextStep}>Next step</button>
         </div>
       );
-    case 4:
+    case 5:
       return (
         <div>
           Step4 <button onClick={nextStep}>Next step</button>
         </div>
       );
-    case 5:
+    case 6:
       return (
         <div>
           Step5 <button onClick={nextStep}>Next step</button>
         </div>
       );
-    case 6:
+    case 7:
       return (
         <div>
           Step6 <button onClick={nextStep}>Next step</button>
         </div>
       );
-    case 'confirmation':
-      return (
-        <div>
-          Confirmation <button>Next step</button>
-        </div>
-      );
+    case 8:
+      return <div>Confirmation</div>;
     default:
       return (
         <div>

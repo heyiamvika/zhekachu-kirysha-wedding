@@ -1,40 +1,46 @@
 'use client';
 
-import { useState } from 'react';
+import { MouseEventHandler, useState } from 'react';
 import { Step } from 'app/lib/definitions';
 import { renderStep } from './renderStep';
+import { PAGES } from 'app/lib/pages';
 
 export default function Home() {
-  const [currentStep, setCurrentStep] = useState<Step>('start');
+  const [currentStep, setCurrentStep] = useState<Step>(PAGES.START_PAGE);
 
   const nextStep = () => {
-    setCurrentStep((prevStep) => {
-      if (prevStep === 'start') {
-        return 1;
-      }
-
-      if (prevStep === 'confirmation') {
-        return 'start';
-      }
-
-      return prevStep + 1;
-    });
+    setCurrentStep((prevStep) => prevStep + 1);
   };
 
   const prevStep = () => {
-    // setCurrentStep((prevStep) => {
-    //   if (prevStep === 'start') {
-    //     return 'start';
-    //   }
-    //   if (prevStep === 'confirmation') {
-    //     return 6;
-    //   }
-    //   return prevStep - 1;
-    // });
+    if (currentStep === PAGES.START_PAGE || currentStep === PAGES.LOCATION_PAGE)
+      return;
+
+    setCurrentStep((prevStep) => prevStep - 1);
+  };
+
+  const handleScreenClick: MouseEventHandler = (event) => {
+    const clickX = event.clientX;
+    const screenWidth = window.innerWidth;
+
+    if (clickX < screenWidth / 2) {
+      // Клік у лівій половині
+      console.log('Клік у лівій половині (React)!');
+      // Тут ви можете викликати функцію для першої події
+      prevStep();
+    } else {
+      // Клік у правій половині
+      console.log('Клік у правій половині (React)!');
+      // Тут ви можете викликати функцію для другої події
+      nextStep();
+    }
   };
 
   return (
-    <div className='w-full h-screen flex justify-center items-center'>
+    <div
+      className='w-full h-screen flex justify-center items-center'
+      onClick={handleScreenClick}
+    >
       {renderStep(currentStep, nextStep, prevStep)}
     </div>
   );

@@ -3,4 +3,9 @@ export type Guest = {
   name: string;
 };
 
-export type Step = 'start' | number | 'confirmation';
+export type Step = number;
+
+export type StepPageProps = {
+  onNext?: () => void;
+  onPrev?: () => void;
+};
