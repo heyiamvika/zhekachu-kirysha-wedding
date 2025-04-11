@@ -1,3 +1,4 @@
 export default function Home() {
-  return <div>hello world</div>;
+  // TODO: redirect to guests page
+  return <div>TODO</div>;
 }
