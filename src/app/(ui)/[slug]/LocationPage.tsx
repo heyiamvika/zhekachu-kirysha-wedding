@@ -1,10 +1,9 @@
-import { StepPageProps } from 'app/lib/definitions';
 import Image from 'next/image';
 
-const StepOne = ({ onNext }: StepPageProps) => {
+const LocationPage = () => {
   return (
     <>
-      <button onClick={onNext}>
+      <button>
         <Image
           src='/right-arrow.png'
           alt='стрілка вправо'
@@ -16,4 +15,4 @@ const StepOne = ({ onNext }: StepPageProps) => {
   );
 };
 
-export default StepOne;
+export default LocationPage;

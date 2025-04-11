@@ -4,8 +4,3 @@ export type Guest = {
 };
 
 export type Step = number;
-
-export type StepPageProps = {
-  onNext?: () => void;
-  onPrev?: () => void;
-};

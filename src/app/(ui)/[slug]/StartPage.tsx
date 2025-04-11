@@ -1,8 +1,6 @@
-import { StepPageProps } from 'app/lib/definitions';
-
-const StartPage = ({ onNext }: StepPageProps) => {
+const StartPage = () => {
   // TODO: add layout
-  return <div onClick={onNext}>Start</div>;
+  return <div>Start</div>;
 };
 
 export default StartPage;

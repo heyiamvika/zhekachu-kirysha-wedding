@@ -6,14 +6,14 @@ import { renderStep } from './renderStep';
 import { PAGES } from 'app/lib/pages';
 
 export default function Home() {
-  const [currentStep, setCurrentStep] = useState<Step>(PAGES.START_PAGE);
+  const [currentStep, setCurrentStep] = useState<Step>(PAGES.START);
 
   const nextStep = () => {
     setCurrentStep((prevStep) => prevStep + 1);
   };
 
   const prevStep = () => {
-    if (currentStep === PAGES.START_PAGE || currentStep === PAGES.LOCATION_PAGE)
+    if (currentStep === PAGES.START || currentStep === PAGES.LOCATION_STEP)
       return;
 
     setCurrentStep((prevStep) => prevStep - 1);
@@ -24,14 +24,8 @@ export default function Home() {
     const screenWidth = window.innerWidth;
 
     if (clickX < screenWidth / 2) {
-      // Клік у лівій половині
-      console.log('Клік у лівій половині (React)!');
-      // Тут ви можете викликати функцію для першої події
       prevStep();
     } else {
-      // Клік у правій половині
-      console.log('Клік у правій половині (React)!');
-      // Тут ви можете викликати функцію для другої події
       nextStep();
     }
   };
@@ -41,7 +35,7 @@ export default function Home() {
       className='w-full h-screen flex justify-center items-center'
       onClick={handleScreenClick}
     >
-      {renderStep(currentStep, nextStep, prevStep)}
+      {renderStep(currentStep)}
     </div>
   );
 }
