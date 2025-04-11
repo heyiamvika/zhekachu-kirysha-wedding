@@ -1,14 +1,11 @@
 import Image from 'next/image';
-import NavigationArrow from '../components/NavigationArrow';
 import Button from '../components/Button';
+import NavigationArrowGroup from '../components/NavigationArrowGroup';
 
 const TransportationPage = () => {
   return (
-    <div className='h-full flex flex-col justify-start items-start py-6 '>
-      <div className='w-full flex justify-between mb-13.5 px-4'>
-        <NavigationArrow direction='left' />
-        <NavigationArrow direction='right' />
-      </div>
+    <div className='h-full flex flex-col justify-start items-start py-6'>
+      <NavigationArrowGroup />
       <span className='px-4'>
         ми будемо разом їхати автобусом, але якщо ти своїм ходом - клікай!
       </span>
