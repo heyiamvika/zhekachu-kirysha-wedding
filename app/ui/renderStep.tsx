@@ -6,10 +6,10 @@ import LocationPage from './LocationPage';
 import TransportationPage from './TransportationPage';
 import { MouseEventHandler } from 'react';
 
-export const renderStep = (currentStep: Step, onClick: MouseEventHandler) => {
+export const renderStep = (currentStep: Step, onNext: MouseEventHandler) => {
   switch (currentStep) {
     case PAGES.START:
-      return <StartPage onClick={onClick} />;
+      return <StartPage onNext={onNext} />;
     case PAGES.LOCATION_STEP:
       return <LocationPage />;
     case PAGES.TRANSPORTATION_STEP:
@@ -25,6 +25,6 @@ export const renderStep = (currentStep: Step, onClick: MouseEventHandler) => {
     case PAGES.CONFIRMATION_STEP:
       return <div>Confirmation</div>;
     default:
-      return <StartPage onClick={onClick} />;
+      return <StartPage onNext={onNext} />;
   }
 };
