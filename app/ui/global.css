@@ -2,8 +2,8 @@
 
 @theme {
   --color-foreground: #3E4D32;
-  --font-size-big: 48px;
-  --font-size-standard: 36px;
+  --text-big: 48px;
+  --text-standard: 36px;
 }
 
 body {
@@ -12,5 +12,5 @@ body {
   background-image: url('@/public/background.png');
   color: var(--color-foreground);
   font-family: var(--font-custom), Arial, Helvetica, sans-serif;
-  font-size: var(--font-size-standard);
+  font-size: var(--text-standard);
 }
