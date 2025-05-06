@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import '@/app/ui/global.css';
+import { inspiration } from '@/app/ui/fonts';
 
 export const metadata: Metadata = {
   title: 'Женя та Кір одружуються!',
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' className={`${inspiration.className} antialiased`}>
       <body>{children}</body>
     </html>
   );

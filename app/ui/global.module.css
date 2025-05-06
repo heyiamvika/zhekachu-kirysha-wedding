@@ -1,0 +1,7 @@
+html {
+    @import "tailwindcss";
+    background-size: cover;
+    background-image: url("@/public/background.png");
+    font-family: Inspiration, Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
