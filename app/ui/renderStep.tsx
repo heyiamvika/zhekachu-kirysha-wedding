@@ -4,11 +4,12 @@ import { PAGES } from '@/app/lib/pages';
 import StartPage from './StartPage';
 import LocationPage from './LocationPage';
 import TransportationPage from './TransportationPage';
+import { MouseEventHandler } from 'react';
 
-export const renderStep = (currentStep: Step) => {
+export const renderStep = (currentStep: Step, onClick: MouseEventHandler) => {
   switch (currentStep) {
     case PAGES.START:
-      return <StartPage />;
+      return <StartPage onClick={onClick} />;
     case PAGES.LOCATION_STEP:
       return <LocationPage />;
     case PAGES.TRANSPORTATION_STEP:
@@ -24,6 +25,6 @@ export const renderStep = (currentStep: Step) => {
     case PAGES.CONFIRMATION_STEP:
       return <div>Confirmation</div>;
     default:
-      return <StartPage />;
+      return <StartPage onClick={onClick} />;
   }
 };
