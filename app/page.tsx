@@ -1,9 +1,9 @@
 'use client';
 
 import { MouseEventHandler, useState } from 'react';
-import { Step } from 'app/lib/definitions';
-import { renderStep } from './renderStep';
-import { PAGES } from 'app/lib/pages';
+import { Step } from '@/app/lib/definitions';
+import { PAGES } from '@/app/lib/pages';
+import { renderStep } from '@/app/ui/renderStep';
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState<Step>(PAGES.START);

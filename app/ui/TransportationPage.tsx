@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import Button from '../components/Button';
-import NavigationArrowGroup from '../components/NavigationArrowGroup';
+import Button from '@/app/ui/components/Button';
+import NavigationArrowGroup from '@/app/ui/components/NavigationArrowGroup';
 
 const TransportationPage = () => {
   return (

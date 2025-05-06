@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* :root {
+  --foreground: #3E4D32;
+} */
+
+/* @theme {
+  --color-foreground: var(--foreground);
+  --font-custom: var(--font-custom);
+} */
+
+body {
+  @apply bg-cover;
+  background-image: url('@/public/background.png');
+  /* color: var(--foreground);
+  font-family: var(--font-custom), Arial, Helvetica, sans-serif; */
+}

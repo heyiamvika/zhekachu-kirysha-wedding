@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import NavigationArrow from '../components/NavigationArrow';
+import NavigationArrow from '@/app/ui/components/NavigationArrow';
 
 const LocationPage = () => {
   // TODO: Fix background

@@ -1,5 +1,5 @@
-import { Step } from 'app/lib/definitions';
-import { PAGES } from 'app/lib/pages';
+import { Step } from '@/app/lib/definitions';
+import { PAGES } from '@/app/lib/pages';
 
 import StartPage from './StartPage';
 import LocationPage from './LocationPage';

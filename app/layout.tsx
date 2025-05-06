@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
-import './(ui)/globals.css';
-import { customFont } from './(ui)/fonts';
+import '@/app/ui/global.css';
 
 export const metadata: Metadata = {
   title: 'Женя та Кір одружуються!',
@@ -14,7 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${customFont.variable} antialiased`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
