@@ -1,17 +1,16 @@
 @import "tailwindcss";
 
-:root {
-  --foreground: #3E4D32;
+@theme {
+  --color-foreground: #3E4D32;
+  --font-size-big: 48px;
+  --font-size-standard: 36px;
 }
-
-/* @theme {
-  --color-foreground: var(--foreground);
-  --font-custom: var(--font-custom);
-} */
 
 body {
   @apply bg-cover;
+  @apply font-extrabold;
   background-image: url('@/public/background.png');
-  color: var(--foreground);
+  color: var(--color-foreground);
   font-family: var(--font-custom), Arial, Helvetica, sans-serif;
+  font-size: var(--font-size-standard);
 }
