@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { MouseEventHandler, useState } from 'react';
+// import Image from 'next/image';
 
 type StartPageProps = {
   onNext: MouseEventHandler;
@@ -23,14 +24,14 @@ type ClosedParcelProps = {
 };
 
 const ClosedParcel = ({ isParcelOpen, onClick }: ClosedParcelProps) => {
-  const animationStyles = 'transition ease-in-out transform duration-4000';
+  const animationStyles = 'transition ease-out transform duration-4000';
 
   return (
     <>
       <div
         onClick={onClick}
         className={clsx(
-          'bg-[url(/envelope-top.png)] bg-cover absolute top-0 w-full h-100 z-10',
+          'bg-[url(/envelope-top.svg)] drop-shadow-2xl bg-cover bg-center w-full h-115 max-h-[60%] absolute top-0 z-10',
           {
             [`${animationStyles} -translate-y-[100%]`]: isParcelOpen,
           }
