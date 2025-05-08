@@ -10,7 +10,7 @@ const StartPage = ({ onNext }: StartPageProps) => {
   const handleOpenParcel = () => setIsParcelOpen(true);
 
   return (
-    <div className='h-screen w-full bg-[url(/main-photo.png)] bg-cover bg-center'>
+    <div className='h-screen w-full bg-[url(/main-photo.jpg)] bg-cover bg-top'>
       <OpenBackground isParcelOpen={isParcelOpen} onNext={onNext} />
       <ClosedParcel isParcelOpen={isParcelOpen} onOpen={handleOpenParcel} />
     </div>
@@ -61,13 +61,13 @@ const OpenBackground = ({ isParcelOpen, onNext }: OpenBackgroundProps) => {
   return (
     <div
       className={clsx(
-        'absolute top-0 h-screen w-full text-white text-big flex flex-col items-center text-center justify-around gap-40 bg-black/20',
+        'absolute top-0 h-screen w-full text-white text-big flex flex-col items-center text-center py-10 sm:py-20 justify-between bg-black/20',
         { 'animate-fade-in': isParcelOpen }
       )}
       onClick={onNext}
     >
       <span>Запрошуємо</span>
-      <span>тебе на наше весілля 31 липня!</span>
+      <span className='mb-15'>тебе на наше весілля 31 липня!</span>
     </div>
   );
 };
