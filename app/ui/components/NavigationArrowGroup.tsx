@@ -1,6 +1,6 @@
-import NavigationArrow from './NavigationArrow';
+import { NavigationArrow } from './NavigationArrow';
 
-const NavigationArrowGroup = () => {
+export const NavigationArrowGroup = () => {
   return (
     <div className='w-full flex justify-between mb-13.5 px-4'>
       <NavigationArrow direction='left' />
@@ -8,5 +8,3 @@ const NavigationArrowGroup = () => {
     </div>
   );
 };
-
-export default NavigationArrowGroup;

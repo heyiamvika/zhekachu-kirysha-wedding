@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 
-const Button = ({ children }: PropsWithChildren) => {
+export const Button = ({ children }: PropsWithChildren) => {
   // TODO: стайлінг кнопки
   return (
     <button className='w-50 h-10 px-4 flex justify-center items-center border rounded-2xl'>
@@ -8,5 +8,3 @@ const Button = ({ children }: PropsWithChildren) => {
     </button>
   );
 };
-
-export default Button;

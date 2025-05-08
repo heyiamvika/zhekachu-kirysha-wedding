@@ -1,12 +1,9 @@
 import Image from 'next/image';
-import NavigationArrow from '@/app/ui/components/NavigationArrow';
+import { NavigationArrow } from '@/app/ui/components';
 
 const LocationPage = () => {
-  // TODO: Fix background
-  // TODO: Fix font
-  // TODO: Fix locations
   return (
-    <div className='bg-[url(/location.png)] w-full h-screen bg-center bg-cover bg-no-repeat flex'>
+    <div className='bg-[url(/location.png)] w-full h-screen bg-cover bg-center flex'>
       <NavigationArrow direction='right' />
       <span className=''>Локація</span>
       <div>

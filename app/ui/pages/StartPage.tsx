@@ -1,6 +1,5 @@
 import clsx from 'clsx';
 import { MouseEventHandler, useState } from 'react';
-// import Image from 'next/image';
 
 type StartPageProps = {
   onNext: MouseEventHandler;
@@ -39,7 +38,7 @@ const ClosedParcel = ({ isParcelOpen, onClick }: ClosedParcelProps) => {
       />
       <div
         className={clsx(
-          'bg-[url(/envelope-bottom.png)] bg-cover absolute bottom-0 w-full h-screen flex items-end justify-center',
+          'bg-[url(/envelope-bottom.png)] bg-cover bg-center absolute bottom-0 w-full h-screen flex items-end justify-center',
           {
             [`${animationStyles} translate-y-[100%]`]: isParcelOpen,
           }

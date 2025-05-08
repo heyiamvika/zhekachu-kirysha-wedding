@@ -16,5 +16,3 @@ export const NavigationArrow = ({ direction }: NavigationArrowProps) => {
     </button>
   );
 };
-
-export default NavigationArrow;

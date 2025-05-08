@@ -1,10 +1,10 @@
 import { Step } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
 
-import StartPage from './StartPage';
-import LocationPage from './LocationPage';
-import TransportationPage from './TransportationPage';
+import StartPage from './pages/StartPage';
+import LocationPage from './pages/LocationPage';
 import { MouseEventHandler } from 'react';
+import FormFieldPage from './pages/FormFieldPage';
 
 export const renderStep = (currentStep: Step, onNext: MouseEventHandler) => {
   switch (currentStep) {
@@ -13,7 +13,14 @@ export const renderStep = (currentStep: Step, onNext: MouseEventHandler) => {
     case PAGES.LOCATION_STEP:
       return <LocationPage />;
     case PAGES.TRANSPORTATION_STEP:
-      return <TransportationPage />;
+      return (
+        <FormFieldPage
+          text='ми будемо разом їхати автобусом, але якщо ти своїм ходом - клікай!'
+          imageSrc='/bus.gif'
+          buttonOneText='їду з вами'
+          buttonTwoText='своїм ходом'
+        />
+      );
     case PAGES.HOTEL_STEP:
       return <div>Step3</div>;
     case PAGES.ALLERGIES_STEP:
