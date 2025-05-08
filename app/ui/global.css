@@ -11,6 +11,7 @@
 }
 
 @theme {
+  --breakpoint-sm: 25rem;
   --color-foreground: #3E4D32;
   --text-big: 48px;
   --text-standard: 36px;
