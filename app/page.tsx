@@ -3,16 +3,16 @@
 import { MouseEventHandler, useState } from 'react';
 import { Step } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
-import { renderStep } from '@/app/ui/renderStep';
+import { renderStep } from '@/app/ui/helpers';
 
 export default function Home() {
   const [currentStep, setCurrentStep] = useState<Step>(PAGES.START);
 
-  const nextStep = () => {
+  const handleNextStep = () => {
     setCurrentStep((prevStep) => prevStep + 1);
   };
 
-  const prevStep = () => {
+  const handlePrevStep = () => {
     if (currentStep === PAGES.START || currentStep === PAGES.LOCATION_STEP)
       return;
 
@@ -20,15 +20,24 @@ export default function Home() {
   };
 
   const handleScreenClick: MouseEventHandler = (event) => {
+    if (currentStep === PAGES.START) return;
+
     const clickX = event.clientX;
     const screenWidth = window.innerWidth;
 
     if (clickX < screenWidth / 2) {
-      prevStep();
+      handlePrevStep();
     } else {
-      nextStep();
+      handleNextStep();
     }
   };
 
-  return renderStep(currentStep, handleScreenClick);
+  return (
+    <div onClick={handleScreenClick}>
+      {renderStep(currentStep, {
+        onNext: handleNextStep,
+        onPrev: handlePrevStep,
+      })}
+    </div>
+  );
 }

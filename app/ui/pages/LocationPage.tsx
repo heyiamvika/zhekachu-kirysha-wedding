@@ -1,10 +1,15 @@
 import Image from 'next/image';
 import { NavigationArrow } from '@/app/ui/components';
+import { MouseEventHandler } from 'react';
 
-const LocationPage = () => {
+type LocationPageProps = {
+  onNext: MouseEventHandler;
+};
+
+const LocationPage = ({ onNext }: LocationPageProps) => {
   return (
     <div className='bg-[url(/location.png)] w-full h-screen bg-cover bg-center flex'>
-      <NavigationArrow direction='right' />
+      <NavigationArrow direction='right' onClick={onNext} />
       <span className=''>Локація</span>
       <div>
         <Image

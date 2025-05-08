@@ -1,8 +1,8 @@
 import clsx from 'clsx';
-import { MouseEventHandler, useState } from 'react';
+import { useState } from 'react';
 
 type StartPageProps = {
-  onNext: MouseEventHandler;
+  onNext: () => void;
 };
 
 const StartPage = ({ onNext }: StartPageProps) => {
@@ -11,24 +11,24 @@ const StartPage = ({ onNext }: StartPageProps) => {
 
   return (
     <div className='h-screen w-full bg-[url(/main-photo.png)] bg-cover bg-center'>
-      <OpenBackground isParcelOpen={isParcelOpen} onClick={onNext} />
-      <ClosedParcel isParcelOpen={isParcelOpen} onClick={handleOpenParcel} />
+      <OpenBackground isParcelOpen={isParcelOpen} onNext={onNext} />
+      <ClosedParcel isParcelOpen={isParcelOpen} onOpen={handleOpenParcel} />
     </div>
   );
 };
 
 type ClosedParcelProps = {
   isParcelOpen: boolean;
-  onClick: MouseEventHandler;
+  onOpen: () => void;
 };
 
-const ClosedParcel = ({ isParcelOpen, onClick }: ClosedParcelProps) => {
+const ClosedParcel = ({ isParcelOpen, onOpen }: ClosedParcelProps) => {
   const animationStyles = 'transition ease-out transform duration-4000';
 
   return (
     <>
       <div
-        onClick={onClick}
+        onClick={onOpen}
         className={clsx(
           'bg-[url(/envelope-top.svg)] drop-shadow-2xl bg-cover bg-center w-full h-115 max-h-[60%] absolute top-0 z-10',
           {
@@ -54,17 +54,17 @@ const ClosedParcel = ({ isParcelOpen, onClick }: ClosedParcelProps) => {
 
 type OpenBackgroundProps = {
   isParcelOpen: boolean;
-  onClick: MouseEventHandler;
+  onNext: () => void;
 };
 
-const OpenBackground = ({ isParcelOpen, onClick }: OpenBackgroundProps) => {
+const OpenBackground = ({ isParcelOpen, onNext }: OpenBackgroundProps) => {
   return (
     <div
       className={clsx(
         'absolute top-0 h-screen w-full text-white text-big flex flex-col items-center text-center justify-around gap-40 bg-black/20',
         { 'animate-fade-in': isParcelOpen }
       )}
-      onClick={onClick}
+      onClick={onNext}
     >
       <span>Запрошуємо</span>
       <span>тебе на наше весілля 31 липня!</span>

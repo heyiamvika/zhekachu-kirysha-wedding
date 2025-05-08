@@ -1,17 +1,21 @@
 import { Step } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
 
-import StartPage from './pages/StartPage';
-import LocationPage from './pages/LocationPage';
-import { MouseEventHandler } from 'react';
-import FormFieldPage from './pages/FormFieldPage';
+import StartPage from '../pages/StartPage';
+import LocationPage from '../pages/LocationPage';
+import FormFieldPage from '../pages/FormFieldPage';
 
-export const renderStep = (currentStep: Step, onNext: MouseEventHandler) => {
+type Events = {
+  onNext: () => void;
+  onPrev: () => void;
+};
+
+export const renderStep = (currentStep: Step, events: Events) => {
   switch (currentStep) {
     case PAGES.START:
-      return <StartPage onNext={onNext} />;
+      return <StartPage {...events} />;
     case PAGES.LOCATION_STEP:
-      return <LocationPage />;
+      return <LocationPage {...events} />;
     case PAGES.TRANSPORTATION_STEP:
       return (
         <FormFieldPage
@@ -19,6 +23,7 @@ export const renderStep = (currentStep: Step, onNext: MouseEventHandler) => {
           imageSrc='/bus.gif'
           buttonOneText='їду з вами'
           buttonTwoText='своїм ходом'
+          {...events}
         />
       );
     case PAGES.HOTEL_STEP:
@@ -32,6 +37,6 @@ export const renderStep = (currentStep: Step, onNext: MouseEventHandler) => {
     case PAGES.CONFIRMATION_STEP:
       return <div>Confirmation</div>;
     default:
-      return <StartPage onNext={onNext} />;
+      return <StartPage {...events} />;
   }
 };

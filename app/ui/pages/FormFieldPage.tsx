@@ -7,6 +7,8 @@ type Props = {
   imageSrc: string;
   buttonOneText?: string;
   buttonTwoText?: string;
+  onNext: () => void;
+  onPrev: () => void;
 };
 
 const FormFieldPage = ({
@@ -14,10 +16,12 @@ const FormFieldPage = ({
   imageSrc,
   buttonOneText,
   buttonTwoText,
+  onNext,
+  onPrev,
 }: Props) => {
   return (
     <div className='h-full flex flex-col justify-start items-start py-6'>
-      <NavigationArrowGroup />
+      <NavigationArrowGroup onNext={onNext} onPrev={onPrev} />
       <span className='px-4'>{text}</span>
       <div className='mb-10.5 w-full flex justify-center'>
         <Image src={imageSrc} alt={text} width={375} height={290} />
