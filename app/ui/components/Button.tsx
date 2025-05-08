@@ -1,9 +1,18 @@
 import { PropsWithChildren } from 'react';
 
-export const Button = ({ children }: PropsWithChildren) => {
-  // TODO: стайлінг кнопки
+type ButtonProps = {
+  onClick: () => void;
+} & PropsWithChildren;
+
+export const Button = ({ children, onClick }: ButtonProps) => {
   return (
-    <button className='w-50 h-10 px-4 flex justify-center items-center border rounded-2xl'>
+    <button
+      className='min-w-50 h-10 px-8 flex justify-center items-center border rounded-2xl text-small'
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick();
+      }}
+    >
       {children}
     </button>
   );

@@ -14,6 +14,7 @@
   --color-foreground: #3E4D32;
   --text-big: 48px;
   --text-standard: 36px;
+  --text-small: 24px;
   --animate-fade-in: fade-in 4s ease-out forwards;
 }
 
