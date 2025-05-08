@@ -1,12 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import { Button, NavigationArrowGroup } from '@/app/ui/components';
+import { ButtonGroup, NavigationArrowGroup } from '@/app/ui/components';
 
 type Props = {
   text: string;
   imageSrc: string;
   buttonOneText?: string;
   buttonTwoText?: string;
+  onFormFieldSet?: (value: string) => void;
   onNext?: () => void;
   onPrev?: () => void;
 };
@@ -16,6 +17,7 @@ const FormFieldPage = ({
   imageSrc,
   buttonOneText,
   buttonTwoText,
+  onFormFieldSet,
   onNext,
   onPrev,
 }: Props) => {
@@ -28,12 +30,12 @@ const FormFieldPage = ({
       <div className='w-60 sm:w-full h-auto flex grow items-center justify-center'>
         <Image src={imageSrc} alt={text} width={375} height={290} />
       </div>
-      {(buttonOneText || buttonTwoText) && (
-        <div className='w-full px-4 flex flex-col gap-2 sm:gap-4 items-center mb-2 sm:mb-20'>
-          <Button onClick={() => console.log('click')}>{buttonOneText}</Button>
-          <Button onClick={() => console.log('click')}>{buttonTwoText}</Button>
-        </div>
-      )}
+      <ButtonGroup
+        buttonOneText={buttonOneText}
+        buttonTwoText={buttonTwoText}
+        onButtonOneClick={onFormFieldSet}
+        onButtonTwoClick={onFormFieldSet}
+      />
     </div>
   );
 };

@@ -1,12 +1,29 @@
 'use client';
 
 import { MouseEventHandler, useState } from 'react';
-import { Step } from '@/app/lib/definitions';
+import { FormData, Step } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
 import { renderStep } from '@/app/ui/helpers';
 
+const initialFormData: FormData = {
+  transportation: null,
+  hotel: null,
+  allergies: null,
+  alcohol: null,
+};
+
 export default function Home() {
+  const [formData, setFormData] = useState(initialFormData);
   const [currentStep, setCurrentStep] = useState<Step>(PAGES.START);
+
+  const handleFormValueSet = (key: keyof FormData, value: string) => {
+    setFormData((prevState) => ({ ...prevState, [key]: value }));
+    handleNextStep();
+  };
+
+  const handleSubmitForm = () => {
+    console.log({ formData });
+  };
 
   const handleNextStep = () => {
     if (currentStep === PAGES.CONFIRMATION_STEP) return;
@@ -39,6 +56,8 @@ export default function Home() {
       {renderStep(currentStep, {
         onNext: handleNextStep,
         onPrev: handlePrevStep,
+        onFormValueSet: handleFormValueSet,
+        onFormSubmit: handleSubmitForm,
       })}
     </div>
   );

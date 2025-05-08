@@ -4,3 +4,10 @@ export type Guest = {
 };
 
 export type Step = number;
+
+export type FormData = {
+  transportation: string | null;
+  hotel: string | null;
+  allergies: string | null;
+  alcohol: string | null;
+};

@@ -1,4 +1,4 @@
-import { Step } from '@/app/lib/definitions';
+import { Step, FormData } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
 
 import StartPage from '../pages/StartPage';
@@ -8,10 +8,12 @@ import FormFieldPage from '../pages/FormFieldPage';
 type Events = {
   onNext: () => void;
   onPrev: () => void;
+  onFormValueSet: (key: keyof FormData, value: string) => void;
+  onFormSubmit: () => void;
 };
 
 export const renderStep = (currentStep: Step, events: Events) => {
-  const { onNext, onPrev } = events;
+  const { onNext, onPrev, onFormValueSet, onFormSubmit } = events;
 
   switch (currentStep) {
     case PAGES.START:
@@ -25,6 +27,7 @@ export const renderStep = (currentStep: Step, events: Events) => {
           imageSrc='/transportation.svg'
           buttonOneText='їду з вами'
           buttonTwoText='своїм ходом'
+          onFormFieldSet={(value) => onFormValueSet('transportation', value)}
           {...events}
         />
       );
@@ -35,6 +38,7 @@ export const renderStep = (currentStep: Step, events: Events) => {
           imageSrc='/hotel.svg'
           buttonOneText='офкорс!'
           buttonTwoText='їду до себе'
+          onFormFieldSet={(value) => onFormValueSet('hotel', value)}
           {...events}
         />
       );
@@ -45,6 +49,7 @@ export const renderStep = (currentStep: Step, events: Events) => {
           imageSrc='/allergies.svg'
           buttonOneText='я їм все!'
           buttonTwoText='так, я напишу'
+          onFormFieldSet={(value) => onFormValueSet('allergies', value)}
           {...events}
         />
       );
@@ -55,6 +60,7 @@ export const renderStep = (currentStep: Step, events: Events) => {
           imageSrc='/alcohol.svg'
           buttonOneText='наливайте!'
           buttonTwoText='ні, я по 0%'
+          onFormFieldSet={(value) => onFormValueSet('alcohol', value)}
           {...events}
         />
       );
@@ -73,6 +79,7 @@ export const renderStep = (currentStep: Step, events: Events) => {
           imageSrc='/lovebirds.svg'
           onPrev={onPrev}
           buttonOneText='я буду!'
+          onFormFieldSet={onFormSubmit}
         />
       );
     default:
