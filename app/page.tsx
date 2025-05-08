@@ -9,6 +9,8 @@ export default function Home() {
   const [currentStep, setCurrentStep] = useState<Step>(PAGES.START);
 
   const handleNextStep = () => {
+    if (currentStep === PAGES.CONFIRMATION_STEP) return;
+
     setCurrentStep((prevStep) => prevStep + 1);
   };
 
@@ -33,7 +35,7 @@ export default function Home() {
   };
 
   return (
-    <div onClick={handleScreenClick}>
+    <div onClick={handleScreenClick} className='@container'>
       {renderStep(currentStep, {
         onNext: handleNextStep,
         onPrev: handlePrevStep,

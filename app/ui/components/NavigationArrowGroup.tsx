@@ -11,7 +11,7 @@ export const NavigationArrowGroup = ({
 }: NavigationArrowGroupProps) => {
   if (onNext && onPrev) {
     return (
-      <div className='w-full flex justify-between px-4'>
+      <div className='w-full flex justify-between'>
         <NavigationArrow
           direction='left'
           onClick={(e) => {
@@ -32,7 +32,7 @@ export const NavigationArrowGroup = ({
 
   if (onPrev) {
     return (
-      <div className='w-full flex justify-start px-4'>
+      <div className='w-full flex justify-start'>
         <NavigationArrow
           direction='left'
           onClick={(e) => {
@@ -45,15 +45,16 @@ export const NavigationArrowGroup = ({
   }
 
   if (onNext) {
-    <div className='w-full flex justify-end px-4'>
-      <NavigationArrow
-        direction='right'
-        onClick={(e) => {
-          e.stopPropagation();
-          onNext();
-        }}
-      />
-      ;
-    </div>;
+    return (
+      <div className='w-full flex justify-end'>
+        <NavigationArrow
+          direction='right'
+          onClick={(e) => {
+            e.stopPropagation();
+            onNext();
+          }}
+        />
+      </div>
+    );
   }
 };

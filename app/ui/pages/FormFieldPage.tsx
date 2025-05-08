@@ -20,20 +20,15 @@ const FormFieldPage = ({
   onPrev,
 }: Props) => {
   return (
-    <div className='w-full h-screen flex flex-col justify-start items-center py-6'>
-      {/* mb-13.5 */}
+    <div className='w-full h-screen flex flex-col justify-start items-center px-4 py-6 gap-4 @sm:gap-10 overflow-scroll'>
       <NavigationArrowGroup onNext={onNext} onPrev={onPrev} />
-      <span className='h-42 px-4 text-center'>{text}</span>
-      <div className='w-full max-h-86 flex items-center justify-center'>
-        <Image
-          src={imageSrc}
-          alt={text}
-          width={375}
-          height={344}
-          className='w-full max-h-86 mb-10.5'
-        />
+      <span className='flex items-center justify-center text-center'>
+        {text}
+      </span>
+      <div className={`w-full h-auto flex items-center justify-center`}>
+        <Image src={imageSrc} alt={text} width={375} height={290} />
       </div>
-      <div className='w-full px-4 flex flex-col gap-4 items-center mt-auto mb-40'>
+      <div className='w-full px-4 flex flex-col gap-2 @sm:gap-4 items-center mt-auto mb-15'>
         {buttonOneText && (
           <Button onClick={() => console.log('click')}>{buttonOneText}</Button>
         )}

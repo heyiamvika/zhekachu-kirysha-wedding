@@ -22,7 +22,7 @@ export const renderStep = (currentStep: Step, events: Events) => {
       return (
         <FormFieldPage
           text='ми будемо разом їхати автобусом, але якщо ти своїм ходом - клікай!'
-          imageSrc='/transportation.gif'
+          imageSrc='/transportation.svg'
           buttonOneText='їду з вами'
           buttonTwoText='своїм ходом'
           {...events}
@@ -32,7 +32,7 @@ export const renderStep = (currentStep: Step, events: Events) => {
       return (
         <FormFieldPage
           text='а ще ми залишаємось ночувати на локації, ти з нами?'
-          imageSrc='/hotel.gif'
+          imageSrc='/hotel.svg'
           buttonOneText='офкорс!'
           buttonTwoText='їду до себе'
           {...events}
@@ -42,7 +42,7 @@ export const renderStep = (currentStep: Step, events: Events) => {
       return (
         <FormFieldPage
           text='ми хочемо, щоб всім було смачно, тому підкажи, чи є в тебе алергії чи особисті дієти?'
-          imageSrc='/allergies.gif'
+          imageSrc='/allergies.svg'
           buttonOneText='я їм все!'
           buttonTwoText='так, я напишу'
           {...events}
@@ -52,7 +52,7 @@ export const renderStep = (currentStep: Step, events: Events) => {
       return (
         <FormFieldPage
           text='і чи можна тобі алкоголь?'
-          imageSrc='/alcohol.png'
+          imageSrc='/alcohol.svg'
           buttonOneText='наливайте!'
           buttonTwoText='ні, я по 0%'
           {...events}
@@ -62,7 +62,7 @@ export const renderStep = (currentStep: Step, events: Events) => {
       return (
         <FormFieldPage
           text='до речі, в нас нема дрескоду, але якщо є вишиванки - їх час вигуляти'
-          imageSrc='/vyshyvanka.png'
+          imageSrc='/vyshyvanka.svg'
           {...events}
         />
       );
@@ -70,7 +70,7 @@ export const renderStep = (currentStep: Step, events: Events) => {
       return (
         <FormFieldPage
           text='чекаємо на твоє завітне “так!”'
-          imageSrc='/lovebirds.png'
+          imageSrc='/lovebirds.svg'
           onPrev={onPrev}
           buttonOneText='я буду!'
         />
