@@ -4,6 +4,9 @@ import { MouseEventHandler, useState } from 'react';
 import { FormData, Step } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
 import { renderStep } from '@/app/ui/helpers';
+import DesktopPage from './ui/pages/DesktopPage';
+
+const MOBILE_MAX_WIDTH = 430;
 
 const initialFormData: FormData = {
   transportation: null,
@@ -50,6 +53,10 @@ export default function Home() {
       handleNextStep();
     }
   };
+
+  if (window.innerWidth > MOBILE_MAX_WIDTH) {
+    return <DesktopPage />;
+  }
 
   return (
     <div onClick={handleScreenClick} className='@container'>
