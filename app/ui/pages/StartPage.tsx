@@ -54,7 +54,7 @@ const ClosedParcel = ({
           }
         )}
       >
-        <span className='text-big mb-[25vh] sm:max-w-94 text-center'>
+        <span className='text-big mb-[15vh] sm:mb-[25vh] max-w-[80%] text-center'>
           {`Привіт, ${guestName}!`}
         </span>
       </div>
