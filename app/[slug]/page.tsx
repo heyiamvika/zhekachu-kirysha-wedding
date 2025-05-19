@@ -24,5 +24,5 @@ export default async function Page({
 
   console.log({ slug, guest });
 
-  return guest ? <GuestPage /> : <NotFoundPage />;
+  return guest ? <GuestPage guestName={guest.name} /> : <NotFoundPage />;
 }

@@ -4,6 +4,7 @@ import { PAGES } from '@/app/lib/pages';
 import StartPage from '../pages/StartPage';
 import LocationPage from '../pages/LocationPage';
 import FormFieldPage from '../pages/FormFieldPage';
+import NotFoundPage from '../pages/NotFoundPage';
 
 type Events = {
   onNext: () => void;
@@ -12,12 +13,16 @@ type Events = {
   onFormSubmit: () => void;
 };
 
-export const renderStep = (currentStep: Step, events: Events) => {
+export const renderStep = (
+  guestName: string,
+  currentStep: Step,
+  events: Events
+) => {
   const { onNext, onPrev, onFormValueSet, onFormSubmit } = events;
 
   switch (currentStep) {
     case PAGES.START:
-      return <StartPage onNext={onNext} />;
+      return <StartPage onNext={onNext} guestName={guestName} />;
     case PAGES.LOCATION_STEP:
       return <LocationPage onNext={onNext} />;
     case PAGES.TRANSPORTATION_STEP:
@@ -83,6 +88,6 @@ export const renderStep = (currentStep: Step, events: Events) => {
         />
       );
     default:
-      return <StartPage {...events} />;
+      return <NotFoundPage />;
   }
 };

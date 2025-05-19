@@ -2,27 +2,37 @@ import clsx from 'clsx';
 import { useState } from 'react';
 
 type StartPageProps = {
+  guestName: string;
   onNext: () => void;
 };
 
-const StartPage = ({ onNext }: StartPageProps) => {
+const StartPage = ({ guestName, onNext }: StartPageProps) => {
   const [isParcelOpen, setIsParcelOpen] = useState(false);
   const handleOpenParcel = () => setIsParcelOpen(true);
 
   return (
     <div className='h-screen w-full bg-[url(/main-photo.jpg)] bg-cover bg-top'>
       <OpenBackground isParcelOpen={isParcelOpen} onNext={onNext} />
-      <ClosedParcel isParcelOpen={isParcelOpen} onOpen={handleOpenParcel} />
+      <ClosedParcel
+        guestName={guestName}
+        isParcelOpen={isParcelOpen}
+        onOpen={handleOpenParcel}
+      />
     </div>
   );
 };
 
 type ClosedParcelProps = {
+  guestName: string;
   isParcelOpen: boolean;
   onOpen: () => void;
 };
 
-const ClosedParcel = ({ isParcelOpen, onOpen }: ClosedParcelProps) => {
+const ClosedParcel = ({
+  guestName,
+  isParcelOpen,
+  onOpen,
+}: ClosedParcelProps) => {
   const animationStyles = 'transition ease-out transform duration-4000';
 
   return (
@@ -45,7 +55,7 @@ const ClosedParcel = ({ isParcelOpen, onOpen }: ClosedParcelProps) => {
         )}
       >
         <span className='text-big mb-[25vh] sm:max-w-94 text-center'>
-          Привіт, Віка!
+          {`Привіт, ${guestName}!`}
         </span>
       </div>
     </>

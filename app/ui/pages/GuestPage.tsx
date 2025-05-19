@@ -15,7 +15,7 @@ const initialFormData: FormData = {
   alcohol: null,
 };
 
-export default function GuestPage() {
+export default function GuestPage({ guestName }: { guestName: string }) {
   const [formData, setFormData] = useState(initialFormData);
   const [currentStep, setCurrentStep] = useState<Step>(PAGES.START);
 
@@ -60,7 +60,7 @@ export default function GuestPage() {
 
   return (
     <div onClick={handleScreenClick} className='@container'>
-      {renderStep(currentStep, {
+      {renderStep(guestName, currentStep, {
         onNext: handleNextStep,
         onPrev: handlePrevStep,
         onFormValueSet: handleFormValueSet,
