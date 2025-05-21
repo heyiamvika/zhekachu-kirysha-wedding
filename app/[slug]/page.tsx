@@ -1,13 +1,9 @@
-import { guests } from '../lib/placeholder-data';
+import { fetchGuests } from '../lib/googleSheets';
 import GuestPage from '../ui/pages/GuestPage';
 import NotFoundPage from '../ui/pages/NotFoundPage';
 
 export async function generateStaticParams() {
-  // TODO: Change to data from Google Sheets
-  const guestsPages = guests;
-
-  console.log({ guestsPages });
-
+  const guestsPages = await fetchGuests();
   return guestsPages.map((page) => ({
     slug: page.slug,
   }));
@@ -20,9 +16,7 @@ export default async function Page({
 }) {
   const { slug } = await params;
 
-  const guest = guests.find((guest) => guest.slug === slug);
-
-  console.log({ slug, guest });
-
+  const guestsPages = await fetchGuests();
+  const guest = guestsPages.find((guest) => guest.slug === `/${slug}`);
   return guest ? <GuestPage guestName={guest.name} /> : <NotFoundPage />;
 }
