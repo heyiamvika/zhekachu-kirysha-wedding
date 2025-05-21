@@ -1,10 +1,11 @@
 'use client';
 
-import { MouseEventHandler, useState } from 'react';
-import { FormData, Step } from '@/app/lib/definitions';
+import { MouseEventHandler, Suspense, useState } from 'react';
+import { FormData, Guest, Step } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
 import { renderStep } from '@/app/ui/helpers';
 import DesktopPage from './DesktopPage';
+import { submitGuestAnswers } from '@/app/lib/googleSheets';
 
 const MOBILE_MAX_WIDTH = 430;
 
@@ -15,8 +16,8 @@ const initialFormData: FormData = {
   alcohol: null,
 };
 
-export default function GuestPage({ guestName }: { guestName: string }) {
-  const [formData, setFormData] = useState(initialFormData);
+export default function GuestPage({ guest }: { guest: Guest }) {
+  const [formData, setFormData] = useState<FormData>(initialFormData);
   const [currentStep, setCurrentStep] = useState<Step>(PAGES.START);
 
   const handleFormValueSet = (key: keyof FormData, value: string) => {
@@ -24,8 +25,12 @@ export default function GuestPage({ guestName }: { guestName: string }) {
     handleNextStep();
   };
 
-  const handleSubmitForm = () => {
-    console.log({ formData });
+  const handleSubmitForm = async () => {
+    try {
+      await submitGuestAnswers(guest, formData);
+    } catch (err) {
+      console.error({ err });
+    }
   };
 
   const handleNextStep = () => {
@@ -59,13 +64,15 @@ export default function GuestPage({ guestName }: { guestName: string }) {
   }
 
   return (
-    <div onClick={handleScreenClick} className='@container'>
-      {renderStep(guestName, currentStep, {
-        onNext: handleNextStep,
-        onPrev: handlePrevStep,
-        onFormValueSet: handleFormValueSet,
-        onFormSubmit: handleSubmitForm,
-      })}
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div onClick={handleScreenClick} className='@container'>
+        {renderStep(guest.name, currentStep, {
+          onNext: handleNextStep,
+          onPrev: handlePrevStep,
+          onFormValueSet: handleFormValueSet,
+          onFormSubmit: handleSubmitForm,
+        })}
+      </div>
+    </Suspense>
   );
 }

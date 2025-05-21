@@ -18,5 +18,6 @@ export default async function Page({
 
   const guestsPages = await fetchGuests();
   const guest = guestsPages.find((guest) => guest.slug === `/${slug}`);
-  return guest ? <GuestPage guestName={guest.name} /> : <NotFoundPage />;
+
+  return guest ? <GuestPage guest={guest} /> : <NotFoundPage />;
 }

@@ -1,6 +1,7 @@
 export type Guest = {
   slug: string;
   name: string;
+  rowNumber: number;
 };
 
 export type Step = number;
