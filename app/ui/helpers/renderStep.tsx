@@ -29,6 +29,8 @@ export const renderStep = ({ guest, currentStep, events }: RenderStepProps) => {
           text='ми будемо разом їхати автобусом, але якщо ти своїм ходом - клікай!'
           imageSrc='/transportation.svg'
           buttons={['їду з вами', 'своїм ходом']}
+          showNext
+          showPrev
           onFormFieldSet={(value) => onFormValueSet('transportation', value)}
           {...events}
         />
@@ -36,6 +38,8 @@ export const renderStep = ({ guest, currentStep, events }: RenderStepProps) => {
     case PAGES.HOTEL_STEP:
       return (
         <FormFieldPage
+          showNext
+          showPrev
           text='а ще ми залишаємось ночувати на локації, ти з нами?'
           imageSrc='/hotel.svg'
           buttons={['офкорс!', 'їду до себе']}
@@ -46,6 +50,8 @@ export const renderStep = ({ guest, currentStep, events }: RenderStepProps) => {
     case PAGES.ALLERGIES_STEP:
       return (
         <FormFieldPage
+          showNext
+          showPrev
           text='ми хочемо, щоб всім було смачно, тому підкажи, чи є в тебе алергії чи особисті дієти?'
           imageSrc='/allergies.svg'
           buttons={['я їм все!', 'так, я напишу']}
@@ -56,6 +62,8 @@ export const renderStep = ({ guest, currentStep, events }: RenderStepProps) => {
     case PAGES.ALCOHOL_STEP:
       return (
         <FormFieldPage
+          showNext
+          showPrev
           text='і чи можна тобі алкоголь?'
           imageSrc='/alcohol.svg'
           buttons={['наливайте!', 'ні, я по 0%']}
@@ -66,7 +74,8 @@ export const renderStep = ({ guest, currentStep, events }: RenderStepProps) => {
     case PAGES.DRESS_CODE_STEP:
       return (
         <FormFieldPage
-          buttons={[]}
+          showNext
+          showPrev
           text='до речі, в нас нема дрескоду, але якщо є вишиванки - їх час вигуляти'
           imageSrc='/vyshyvanka.svg'
           {...events}
@@ -75,6 +84,7 @@ export const renderStep = ({ guest, currentStep, events }: RenderStepProps) => {
     case PAGES.CONFIRMATION_STEP:
       return (
         <FormFieldPage
+          showPrev
           text='чекаємо на твоє завітне “так!”'
           imageSrc='/lovebirds.svg'
           buttons={['я буду!']}

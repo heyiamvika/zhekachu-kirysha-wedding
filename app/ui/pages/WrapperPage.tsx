@@ -1,6 +1,6 @@
 'use client';
 
-import { MouseEventHandler, useState } from 'react';
+import { MouseEventHandler, useLayoutEffect, useState } from 'react';
 import { FormData, Guest, Step } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
 import { renderStep } from '@/app/ui/helpers';
@@ -19,6 +19,18 @@ const MOBILE_MAX_WIDTH = 430;
 export const WrapperPage = ({ guest }: { guest?: Guest }) => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [currentStep, setCurrentStep] = useState<Step>(PAGES.START);
+  const [windowWidth, setWindowWidth] = useState<number | null>(null);
+
+  useLayoutEffect(() => {
+    if (typeof window !== 'undefined') {
+      setWindowWidth(window.innerWidth);
+
+      const handleResize = () => setWindowWidth(window.innerWidth);
+      window.addEventListener('resize', handleResize);
+
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, []);
 
   const handleFormValueSet = (key: keyof FormData, value: string) => {
     setFormData((prevState) => ({ ...prevState, [key]: value }));
@@ -62,8 +74,7 @@ export const WrapperPage = ({ guest }: { guest?: Guest }) => {
     }
   };
 
-  // TODO: Fix this error;
-  if (window.innerWidth > MOBILE_MAX_WIDTH) {
+  if (windowWidth && windowWidth > MOBILE_MAX_WIDTH) {
     return <DesktopPage />;
   }
 
@@ -71,20 +82,13 @@ export const WrapperPage = ({ guest }: { guest?: Guest }) => {
     return <NotFoundPage />;
   }
 
-  return (
-    <div
-      // onClick={handleScreenClick}
-      className='@container'
-    >
-      {renderStep({
-        guest,
-        currentStep,
-        events: {
-          onFormValueSet: handleFormValueSet,
-          onFormSubmit: handleSubmitForm,
-          onScreenClick: handleScreenClick,
-        },
-      })}
-    </div>
-  );
+  return renderStep({
+    guest,
+    currentStep,
+    events: {
+      onFormValueSet: handleFormValueSet,
+      onFormSubmit: handleSubmitForm,
+      onScreenClick: handleScreenClick,
+    },
+  });
 };
