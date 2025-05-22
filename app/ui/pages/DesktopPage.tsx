@@ -1,4 +1,4 @@
-const DesktopPage = () => {
+export const DesktopPage = () => {
   return (
     <div className='flex flex-col gap-10 w-full h-screen items-center justify-center'>
       <span className='max-w-[70%] text-center'>Привіт!</span>
@@ -9,5 +9,3 @@ const DesktopPage = () => {
     </div>
   );
 };
-
-export default DesktopPage;

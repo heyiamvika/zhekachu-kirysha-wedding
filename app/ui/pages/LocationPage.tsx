@@ -1,14 +1,18 @@
 import Image from 'next/image';
 import { NavigationArrowGroup } from '@/app/ui/components';
+import { MouseEventHandler } from 'react';
 
 type LocationPageProps = {
-  onNext: () => void;
+  onScreenClick: MouseEventHandler;
 };
 
-const LocationPage = ({ onNext }: LocationPageProps) => {
+export const LocationPage = ({ onScreenClick }: LocationPageProps) => {
   return (
-    <div className='bg-[url(/location-background.png)] w-full h-screen bg-cover bg-center px-4 py-6 relative flex flex-col items-center'>
-      <NavigationArrowGroup onNext={onNext} />
+    <div
+      className='bg-[url(/location-background.png)] w-full h-screen bg-cover bg-center px-4 py-6 relative flex flex-col items-center'
+      onClick={onScreenClick}
+    >
+      <NavigationArrowGroup showNext />
       <span className='inline-block -rotate-[12.27deg] text-big absolute left-6 @sm:left-9 top-30 @sm:top-39.5'>
         локація
       </span>
@@ -25,5 +29,3 @@ const LocationPage = ({ onNext }: LocationPageProps) => {
     </div>
   );
 };
-
-export default LocationPage;

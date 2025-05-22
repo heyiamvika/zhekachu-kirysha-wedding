@@ -1,59 +1,35 @@
 import { NavigationArrow } from './NavigationArrow';
 
 type NavigationArrowGroupProps = {
-  onNext?: () => void;
-  onPrev?: () => void;
+  showNext?: boolean;
+  showPrev?: boolean;
 };
 
 export const NavigationArrowGroup = ({
-  onNext,
-  onPrev,
+  showNext = false,
+  showPrev = false,
 }: NavigationArrowGroupProps) => {
-  if (onNext && onPrev) {
+  if (showNext && showPrev) {
     return (
       <div className='w-full flex justify-between'>
-        <NavigationArrow
-          direction='left'
-          onClick={(e) => {
-            e.stopPropagation();
-            onPrev();
-          }}
-        />
-        <NavigationArrow
-          direction='right'
-          onClick={(e) => {
-            e.stopPropagation();
-            onNext();
-          }}
-        />
+        <NavigationArrow direction='left' />
+        <NavigationArrow direction='right' />
       </div>
     );
   }
 
-  if (onPrev) {
+  if (showPrev) {
     return (
       <div className='w-full flex justify-start'>
-        <NavigationArrow
-          direction='left'
-          onClick={(e) => {
-            e.stopPropagation();
-            onPrev();
-          }}
-        />
+        <NavigationArrow direction='left' />
       </div>
     );
   }
 
-  if (onNext) {
+  if (showNext) {
     return (
       <div className='w-full flex justify-end'>
-        <NavigationArrow
-          direction='right'
-          onClick={(e) => {
-            e.stopPropagation();
-            onNext();
-          }}
-        />
+        <NavigationArrow direction='right' />
       </div>
     );
   }

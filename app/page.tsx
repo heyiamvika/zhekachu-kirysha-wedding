@@ -1,4 +1,4 @@
-import NotFoundPage from './ui/pages/NotFoundPage';
+import { NotFoundPage } from '@/app/ui/pages';
 
 export default function Home() {
   return <NotFoundPage />;

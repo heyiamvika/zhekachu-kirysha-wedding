@@ -1,18 +1,23 @@
+'use client';
+
 import clsx from 'clsx';
-import { useState } from 'react';
+import { MouseEventHandler, useState } from 'react';
 
 type StartPageProps = {
   guestName: string;
-  onNext: () => void;
+  onScreenClick: MouseEventHandler;
 };
 
-const StartPage = ({ guestName, onNext }: StartPageProps) => {
+export const StartPage = ({ guestName, onScreenClick }: StartPageProps) => {
   const [isParcelOpen, setIsParcelOpen] = useState(false);
   const handleOpenParcel = () => setIsParcelOpen(true);
 
   return (
     <div className='h-screen w-full bg-[url(/main-photo.jpg)] bg-cover bg-top'>
-      <OpenBackground isParcelOpen={isParcelOpen} onNext={onNext} />
+      <OpenBackground
+        isParcelOpen={isParcelOpen}
+        onScreenClick={onScreenClick}
+      />
       <ClosedParcel
         guestName={guestName}
         isParcelOpen={isParcelOpen}
@@ -64,22 +69,23 @@ const ClosedParcel = ({
 
 type OpenBackgroundProps = {
   isParcelOpen: boolean;
-  onNext: () => void;
+  onScreenClick: MouseEventHandler;
 };
 
-const OpenBackground = ({ isParcelOpen, onNext }: OpenBackgroundProps) => {
+const OpenBackground = ({
+  isParcelOpen,
+  onScreenClick,
+}: OpenBackgroundProps) => {
   return (
     <div
       className={clsx(
         'absolute top-0 h-screen w-full text-white text-big flex flex-col items-center text-center py-10 sm:py-20 justify-between bg-black/20',
         { 'animate-fade-in': isParcelOpen }
       )}
-      onClick={onNext}
+      onClick={onScreenClick}
     >
       <span>Запрошуємо</span>
       <span className='mb-15'>тебе на наше весілля 31 липня!</span>
     </div>
   );
 };
-
-export default StartPage;

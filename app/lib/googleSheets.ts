@@ -4,14 +4,10 @@ import path from 'path';
 import { google, sheets_v4 } from 'googleapis';
 import { FormData, Guest } from '@/app/lib/definitions';
 
-const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json');
-const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
-const RANGE = 'Sheet1!A2:G';
-
 const authAndGetSheets = (): sheets_v4.Sheets => {
   const auth = new google.auth.GoogleAuth({
-    keyFile: CREDENTIALS_PATH,
-    scopes: SCOPES,
+    keyFile: path.join(process.cwd(), 'credentials.json'),
+    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
   const sheets = google.sheets({ version: 'v4', auth });
 
@@ -23,7 +19,7 @@ export const fetchGuests = async (): Promise<Guest[]> => {
     const sheets = authAndGetSheets();
     const res = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.SPREADSHEET_ID,
-      range: RANGE,
+      range: 'Sheet1!A2:G',
     });
     const rows = res.data.values;
 

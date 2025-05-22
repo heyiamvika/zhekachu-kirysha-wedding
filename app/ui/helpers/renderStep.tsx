@@ -1,37 +1,34 @@
-import { Step, FormData } from '@/app/lib/definitions';
+import { Step, FormData, Guest } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
-
-import StartPage from '../pages/StartPage';
-import LocationPage from '../pages/LocationPage';
-import FormFieldPage from '../pages/FormFieldPage';
-import NotFoundPage from '../pages/NotFoundPage';
+import { FormFieldPage, LocationPage, NotFoundPage, StartPage } from '../pages';
+import { MouseEventHandler } from 'react';
 
 type Events = {
-  onNext: () => void;
-  onPrev: () => void;
   onFormValueSet: (key: keyof FormData, value: string) => void;
   onFormSubmit: () => void;
+  onScreenClick: MouseEventHandler;
 };
 
-export const renderStep = (
-  guestName: string,
-  currentStep: Step,
-  events: Events
-) => {
-  const { onNext, onPrev, onFormValueSet, onFormSubmit } = events;
+type RenderStepProps = {
+  guest: Guest;
+  currentStep: Step;
+  events: Events;
+};
+
+export const renderStep = ({ guest, currentStep, events }: RenderStepProps) => {
+  const { onFormValueSet, onFormSubmit, onScreenClick } = events;
 
   switch (currentStep) {
     case PAGES.START:
-      return <StartPage onNext={onNext} guestName={guestName} />;
+      return <StartPage onScreenClick={onScreenClick} guestName={guest.name} />;
     case PAGES.LOCATION_STEP:
-      return <LocationPage onNext={onNext} />;
+      return <LocationPage onScreenClick={onScreenClick} />;
     case PAGES.TRANSPORTATION_STEP:
       return (
         <FormFieldPage
           text='ми будемо разом їхати автобусом, але якщо ти своїм ходом - клікай!'
           imageSrc='/transportation.svg'
-          buttonOneText='їду з вами'
-          buttonTwoText='своїм ходом'
+          buttons={['їду з вами', 'своїм ходом']}
           onFormFieldSet={(value) => onFormValueSet('transportation', value)}
           {...events}
         />
@@ -41,8 +38,7 @@ export const renderStep = (
         <FormFieldPage
           text='а ще ми залишаємось ночувати на локації, ти з нами?'
           imageSrc='/hotel.svg'
-          buttonOneText='офкорс!'
-          buttonTwoText='їду до себе'
+          buttons={['офкорс!', 'їду до себе']}
           onFormFieldSet={(value) => onFormValueSet('hotel', value)}
           {...events}
         />
@@ -52,8 +48,7 @@ export const renderStep = (
         <FormFieldPage
           text='ми хочемо, щоб всім було смачно, тому підкажи, чи є в тебе алергії чи особисті дієти?'
           imageSrc='/allergies.svg'
-          buttonOneText='я їм все!'
-          buttonTwoText='так, я напишу'
+          buttons={['я їм все!', 'так, я напишу']}
           onFormFieldSet={(value) => onFormValueSet('allergies', value)}
           {...events}
         />
@@ -63,8 +58,7 @@ export const renderStep = (
         <FormFieldPage
           text='і чи можна тобі алкоголь?'
           imageSrc='/alcohol.svg'
-          buttonOneText='наливайте!'
-          buttonTwoText='ні, я по 0%'
+          buttons={['наливайте!', 'ні, я по 0%']}
           onFormFieldSet={(value) => onFormValueSet('alcohol', value)}
           {...events}
         />
@@ -72,6 +66,7 @@ export const renderStep = (
     case PAGES.DRESS_CODE_STEP:
       return (
         <FormFieldPage
+          buttons={[]}
           text='до речі, в нас нема дрескоду, але якщо є вишиванки - їх час вигуляти'
           imageSrc='/vyshyvanka.svg'
           {...events}
@@ -82,9 +77,9 @@ export const renderStep = (
         <FormFieldPage
           text='чекаємо на твоє завітне “так!”'
           imageSrc='/lovebirds.svg'
-          onPrev={onPrev}
-          buttonOneText='я буду!'
+          buttons={['я буду!']}
           onFormFieldSet={onFormSubmit}
+          {...events}
         />
       );
     default:
