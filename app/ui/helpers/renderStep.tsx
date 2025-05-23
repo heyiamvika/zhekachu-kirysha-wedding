@@ -58,6 +58,7 @@ export const renderStep = (currentStep: number) => {
           showPrev
           text='до речі, в нас нема дрескоду, але якщо є вишиванки - їх час вигуляти'
           imageSrc='/vyshyvanka.svg'
+          buttons={[]}
         />
       );
     case PAGES.CONFIRMATION_STEP:

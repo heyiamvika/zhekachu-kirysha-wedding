@@ -1,23 +1,28 @@
-import { MouseEventHandler, PropsWithChildren } from 'react';
+import clsx from 'clsx';
+import { MouseEventHandler } from 'react';
 
 type ButtonProps = {
+  value: string;
+  isSelected: boolean;
   onClick: MouseEventHandler;
-} & PropsWithChildren;
+};
 
-export const Button = ({ children, onClick }: ButtonProps) => {
-  if (!children) {
-    return <div className='min-w-55 h-10 px-8' />;
-  }
-
+export const Button = ({ value, isSelected, onClick }: ButtonProps) => {
   return (
     <button
-      className='min-w-55 h-10 px-8 flex justify-center items-center border rounded-2xl text-small'
+      className={clsx(
+        `min-w-55 h-10 px-8 flex justify-center items-center border rounded-2xl text-small hover:border-white hover:bg-foreground hover:text-white`,
+        {
+          'border-white bg-foreground text-white': isSelected,
+        }
+      )}
       onClick={(e) => {
         e.stopPropagation();
         onClick(e);
       }}
+      value={value}
     >
-      {children}
+      {value}
     </button>
   );
 };

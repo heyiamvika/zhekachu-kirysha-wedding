@@ -2,7 +2,8 @@
 
 import path from 'path';
 import { google, sheets_v4 } from 'googleapis';
-import { FormData, Guest } from '@/app/lib/definitions';
+import { Guest } from '@/app/lib/definitions';
+import { AppStore } from './stores';
 
 const authAndGetSheets = (): sheets_v4.Sheets => {
   const auth = new google.auth.GoogleAuth({
@@ -43,7 +44,7 @@ export const fetchGuests = async (): Promise<Guest[]> => {
   }
 };
 
-export const submitGuestAnswers = async (guest: Guest, formData: FormData) => {
+export const submitGuestAnswers = async ({ guest, formData }: AppStore) => {
   try {
     const sheets = authAndGetSheets();
     const { rowNumber } = guest;

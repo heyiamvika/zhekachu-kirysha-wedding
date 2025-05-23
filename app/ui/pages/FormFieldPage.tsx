@@ -12,9 +12,9 @@ import { useAppStore } from '@/app/lib/stores';
 type Props = {
   text: string;
   imageSrc: string;
+  buttons: string[];
   showNext?: boolean;
   showPrev?: boolean;
-  buttons?: string[];
   formFieldKey?: keyof FormData;
 };
 
@@ -27,19 +27,14 @@ export const FormFieldPage = ({
   formFieldKey,
 }: Props) => {
   const windowWidth = useWindowWidth();
-  const {
-    onNextStep,
-    onPrevStep,
-    onFormFieldSet,
-    formData,
-    currentStep,
-    guest,
-  } = useAppStore((state) => state);
+  const store = useAppStore((state) => state);
+
+  const { onNextStep, onPrevStep, onFormFieldSet, formData, currentStep } =
+    store;
+  const selectedValue = formFieldKey ? formData[formFieldKey] : null;
 
   const handleClickNext = () => {
-    const canClickNext = formFieldKey ? formData[formFieldKey] !== null : true;
-
-    if (canClickNext) {
+    if (selectedValue) {
       onNextStep();
     } else {
       // TODO
@@ -63,14 +58,9 @@ export const FormFieldPage = ({
 
   const handleSubmitForm = async () => {
     try {
-      // TODO: submit
-      console.log({ formData });
-      await submitGuestAnswers(guest, formData);
+      await submitGuestAnswers(store);
     } catch (err) {
-      console.error({ err });
-
-      // TODO: спливаюче вікно
-      alert(err);
+      alert(`Упс! Здається в нас помилка: ${err}`);
     }
   };
 
@@ -92,7 +82,11 @@ export const FormFieldPage = ({
       <div className='w-60 sm:w-full h-auto flex grow items-center justify-center'>
         <Image src={imageSrc} alt={text} width={375} height={290} />
       </div>
-      <ButtonGroup buttons={buttons} onSelect={handleBtnClick} />
+      <ButtonGroup
+        buttons={buttons}
+        onSelect={handleBtnClick}
+        selectedValue={selectedValue}
+      />
     </div>
   );
 };
