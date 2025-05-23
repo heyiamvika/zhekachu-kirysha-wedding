@@ -1,4 +1,5 @@
 import { FormData, Guest } from '@/app/lib/definitions';
+import { createAppStore } from '@/app/lib/stores';
 
 export type Store = {
   guest: Guest;
@@ -13,3 +14,5 @@ export type Action = {
 };
 
 export type AppStore = Store & Action;
+
+export type AppStoreApi = ReturnType<typeof createAppStore>;

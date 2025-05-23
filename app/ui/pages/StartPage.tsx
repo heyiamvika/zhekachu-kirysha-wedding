@@ -3,19 +3,20 @@
 import clsx from 'clsx';
 import { MouseEventHandler, useState } from 'react';
 import { useWindowWidth } from '../../lib/hooks';
-import { AppStore } from '@/app/lib/stores';
+import { useAppStore } from '@/app/lib/stores';
 
-export const StartPage = ({ store }: { store: AppStore }) => {
+export const StartPage = () => {
   const [isParcelOpen, setIsParcelOpen] = useState(false);
   const handleOpenParcel = () => setIsParcelOpen(true);
   const windowWidth = useWindowWidth();
-  const { onNextStep, guest } = store;
+  const { onNextStep, guest } = useAppStore((state) => state);
 
   const handleScreenClick: MouseEventHandler = ({ clientX }) => {
     if (!windowWidth) return;
     const clickedRightHalf = clientX >= windowWidth / 2;
 
     if (clickedRightHalf) {
+      console.log({ clickedRightHalf });
       onNextStep();
     }
   };

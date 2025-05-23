@@ -1,17 +1,15 @@
 import { PAGES } from '@/app/lib/pages';
 import { FormFieldPage, LocationPage, NotFoundPage, StartPage } from '../pages';
-import { AppStore } from '@/app/lib/stores';
 
-export const renderStep = (store: AppStore) => {
-  switch (store.currentStep) {
+export const renderStep = (currentStep: number) => {
+  switch (currentStep) {
     case PAGES.START:
-      return <StartPage store={store} />;
+      return <StartPage />;
     case PAGES.LOCATION_STEP:
       return <LocationPage />;
     case PAGES.TRANSPORTATION_STEP:
       return (
         <FormFieldPage
-          store={store}
           formFieldKey='transportation'
           text='ми будемо разом їхати автобусом, але якщо ти своїм ходом - клікай!'
           imageSrc='/transportation.svg'
@@ -23,7 +21,6 @@ export const renderStep = (store: AppStore) => {
     case PAGES.HOTEL_STEP:
       return (
         <FormFieldPage
-          store={store}
           formFieldKey='hotel'
           showNext
           showPrev
@@ -35,7 +32,6 @@ export const renderStep = (store: AppStore) => {
     case PAGES.ALLERGIES_STEP:
       return (
         <FormFieldPage
-          store={store}
           formFieldKey='allergies'
           showNext
           showPrev
@@ -47,7 +43,6 @@ export const renderStep = (store: AppStore) => {
     case PAGES.ALCOHOL_STEP:
       return (
         <FormFieldPage
-          store={store}
           formFieldKey='alcohol'
           showNext
           showPrev
@@ -59,7 +54,6 @@ export const renderStep = (store: AppStore) => {
     case PAGES.DRESS_CODE_STEP:
       return (
         <FormFieldPage
-          store={store}
           showNext
           showPrev
           text='до речі, в нас нема дрескоду, але якщо є вишиванки - їх час вигуляти'
@@ -69,7 +63,6 @@ export const renderStep = (store: AppStore) => {
     case PAGES.CONFIRMATION_STEP:
       return (
         <FormFieldPage
-          store={store}
           showPrev
           text='чекаємо на твоє завітне “так!”'
           imageSrc='/lovebirds.svg'

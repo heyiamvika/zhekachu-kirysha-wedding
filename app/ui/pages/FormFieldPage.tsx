@@ -7,10 +7,9 @@ import { useWindowWidth } from '../../lib/hooks';
 import { FormData } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
 import { submitGuestAnswers } from '@/app/lib/googleSheets';
-import { AppStore } from '@/app/lib/stores';
+import { useAppStore } from '@/app/lib/stores';
 
 type Props = {
-  store: AppStore;
   text: string;
   imageSrc: string;
   showNext?: boolean;
@@ -20,7 +19,6 @@ type Props = {
 };
 
 export const FormFieldPage = ({
-  store,
   text,
   imageSrc,
   buttons,
@@ -36,7 +34,7 @@ export const FormFieldPage = ({
     formData,
     currentStep,
     guest,
-  } = store;
+  } = useAppStore((state) => state);
 
   const handleClickNext = () => {
     const canClickNext = formFieldKey ? formData[formFieldKey] !== null : true;

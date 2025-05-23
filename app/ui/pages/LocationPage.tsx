@@ -4,11 +4,11 @@ import Image from 'next/image';
 import { NavigationArrowGroup } from '@/app/ui/components';
 import { useWindowWidth } from '@/app/lib/hooks';
 import { MouseEventHandler } from 'react';
-import { AppStore } from '@/app/lib/stores';
+import { useAppStore } from '@/app/lib/stores';
 
-export const LocationPage = ({ store }: { store: AppStore }) => {
+export const LocationPage = () => {
   const windowWidth = useWindowWidth();
-  const { onNextStep } = store;
+  const { onNextStep } = useAppStore((state) => state);
 
   const handleScreenClick: MouseEventHandler = ({ clientX }) => {
     if (!windowWidth) return;
