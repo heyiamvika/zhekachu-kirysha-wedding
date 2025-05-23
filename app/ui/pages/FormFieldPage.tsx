@@ -3,8 +3,8 @@
 import Image from 'next/image';
 import { ButtonGroup, NavigationArrowGroup } from '@/app/ui/components';
 import { MouseEventHandler } from 'react';
-import { useWindowWidth } from '../../lib/hooks';
-import { FormData } from '@/app/lib/definitions';
+import { useWindowWidth } from '@/app/lib/hooks';
+import { Buttons } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
 import { submitGuestAnswers } from '@/app/lib/googleSheets';
 import { useAppStore } from '@/app/lib/stores';
@@ -12,10 +12,9 @@ import { useAppStore } from '@/app/lib/stores';
 type Props = {
   text: string;
   imageSrc: string;
-  buttons: string[];
+  buttons?: Buttons;
   showNext?: boolean;
   showPrev?: boolean;
-  formFieldKey?: keyof FormData;
 };
 
 export const FormFieldPage = ({
@@ -24,17 +23,17 @@ export const FormFieldPage = ({
   buttons,
   showNext,
   showPrev,
-  formFieldKey,
 }: Props) => {
   const windowWidth = useWindowWidth();
   const store = useAppStore((state) => state);
 
   const { onNextStep, onPrevStep, onFormFieldSet, formData, currentStep } =
     store;
-  const selectedValue = formFieldKey ? formData[formFieldKey] : null;
+  const selectedValue = buttons ? formData[buttons.formFieldKey] : null;
+  const blockedFromClickingNext = buttons && !selectedValue;
 
   const handleClickNext = () => {
-    if (selectedValue) {
+    if (!blockedFromClickingNext) {
       onNextStep();
     } else {
       // TODO
@@ -50,9 +49,9 @@ export const FormFieldPage = ({
   };
 
   const handleSubmitFieldValue = (value: string) => {
-    if (!formFieldKey) return;
+    if (!buttons) return;
 
-    onFormFieldSet(formFieldKey, value);
+    onFormFieldSet(buttons.formFieldKey, value);
     onNextStep();
   };
 
@@ -65,9 +64,11 @@ export const FormFieldPage = ({
   };
 
   const handleBtnClick = (value: string) => {
-    return currentStep === PAGES.CONFIRMATION_STEP
-      ? handleSubmitForm()
-      : handleSubmitFieldValue(value);
+    handleSubmitFieldValue(value);
+
+    if (currentStep === PAGES.CONFIRMATION_STEP) {
+      handleSubmitForm();
+    }
   };
 
   return (

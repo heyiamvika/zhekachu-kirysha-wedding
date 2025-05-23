@@ -4,3 +4,4 @@ export { WrapperPage } from './WrapperPage';
 export { LocationPage } from './LocationPage';
 export { NotFoundPage } from './NotFoundPage';
 export { StartPage } from './StartPage';
+export { ConfirmedPage } from './ConfirmedPage';

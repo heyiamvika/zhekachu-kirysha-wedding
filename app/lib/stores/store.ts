@@ -10,6 +10,7 @@ const defaultInitState = {
     hotel: null,
     allergies: null,
     alcohol: null,
+    confirmation: null,
   },
 };
 

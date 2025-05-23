@@ -1,8 +1,9 @@
 import React from 'react';
 import { Button } from './Button';
+import { Buttons } from '@/app/lib/definitions';
 
 type ButtonGroupProps = {
-  buttons: string[];
+  buttons?: Buttons;
   selectedValue: string | null;
   onSelect: (value: string) => void;
 };
@@ -14,7 +15,7 @@ export const ButtonGroup = ({
 }: ButtonGroupProps) => {
   return (
     <div className='w-full px-4 flex flex-col gap-2 sm:gap-4 items-center justify-start mb-2 sm:mb-20'>
-      {buttons.map((value) => (
+      {buttons?.options.map((value) => (
         <Button
           key={value}
           onClick={() => onSelect(value)}

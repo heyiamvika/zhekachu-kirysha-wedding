@@ -9,4 +9,10 @@ export type FormData = {
   hotel: string | null;
   allergies: string | null;
   alcohol: string | null;
+  confirmation: string | null;
+};
+
+export type Buttons = {
+  formFieldKey: keyof FormData;
+  options: string[];
 };
