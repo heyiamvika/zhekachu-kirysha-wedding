@@ -2,45 +2,84 @@
 
 import Image from 'next/image';
 import { ButtonGroup, NavigationArrowGroup } from '@/app/ui/components';
-import { MouseEventHandler, useState } from 'react';
+import { MouseEventHandler } from 'react';
+import { useWindowWidth } from '../../lib/hooks';
+import { FormData } from '@/app/lib/definitions';
+import { PAGES } from '@/app/lib/pages';
+import { submitGuestAnswers } from '@/app/lib/googleSheets';
+import { AppStore } from '@/app/lib/stores';
 
 type Props = {
+  store: AppStore;
   text: string;
   imageSrc: string;
   showNext?: boolean;
   showPrev?: boolean;
   buttons?: string[];
-  onFormFieldSet?: (value: string) => void;
-  onScreenClick: MouseEventHandler;
+  formFieldKey?: keyof FormData;
 };
 
 export const FormFieldPage = ({
+  store,
   text,
   imageSrc,
   buttons,
   showNext,
   showPrev,
-  onFormFieldSet,
-  onScreenClick,
+  formFieldKey,
 }: Props) => {
-  const [value, setIsValue] = useState<string | null>(null);
-  const [isError, setIsError] = useState<boolean>(false);
+  const windowWidth = useWindowWidth();
+  const {
+    onNextStep,
+    onPrevStep,
+    onFormFieldSet,
+    formData,
+    currentStep,
+    guest,
+  } = store;
 
-  const handleScreenClick: MouseEventHandler = (e) => {
-    if (!value) {
-      setIsError(true);
+  const handleClickNext = () => {
+    const canClickNext = formFieldKey ? formData[formFieldKey] !== null : true;
+
+    if (canClickNext) {
+      onNextStep();
     } else {
-      onScreenClick(e);
+      // TODO
+      alert('TODO: Show popup');
     }
   };
 
-  const handleSubmitFieldValue = (value: string) => {
-    setIsValue(value);
-    setIsError(false);
+  const handleScreenClick: MouseEventHandler = ({ clientX }) => {
+    if (!windowWidth) return;
 
-    if (onFormFieldSet) {
-      onFormFieldSet(value);
+    const clickedLeftHalf = clientX < windowWidth / 2;
+    return clickedLeftHalf ? onPrevStep() : handleClickNext();
+  };
+
+  const handleSubmitFieldValue = (value: string) => {
+    if (!formFieldKey) return;
+
+    onFormFieldSet(formFieldKey, value);
+    onNextStep();
+  };
+
+  const handleSubmitForm = async () => {
+    try {
+      // TODO: submit
+      console.log({ formData });
+      await submitGuestAnswers(guest, formData);
+    } catch (err) {
+      console.error({ err });
+
+      // TODO: спливаюче вікно
+      alert(err);
     }
+  };
+
+  const handleBtnClick = (value: string) => {
+    return currentStep === PAGES.CONFIRMATION_STEP
+      ? handleSubmitForm()
+      : handleSubmitFieldValue(value);
   };
 
   return (
@@ -55,12 +94,7 @@ export const FormFieldPage = ({
       <div className='w-60 sm:w-full h-auto flex grow items-center justify-center'>
         <Image src={imageSrc} alt={text} width={375} height={290} />
       </div>
-      {isError && (
-        <span className='text-small text-red-700 text-center'>
-          Будь ласка, обери один з варіантів
-        </span>
-      )}
-      <ButtonGroup buttons={buttons} onSelect={handleSubmitFieldValue} />
+      <ButtonGroup buttons={buttons} onSelect={handleBtnClick} />
     </div>
   );
 };

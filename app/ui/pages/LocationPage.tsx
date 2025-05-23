@@ -1,16 +1,28 @@
+'use client';
+
 import Image from 'next/image';
 import { NavigationArrowGroup } from '@/app/ui/components';
+import { useWindowWidth } from '@/app/lib/hooks';
 import { MouseEventHandler } from 'react';
+import { AppStore } from '@/app/lib/stores';
 
-type LocationPageProps = {
-  onScreenClick: MouseEventHandler;
-};
+export const LocationPage = ({ store }: { store: AppStore }) => {
+  const windowWidth = useWindowWidth();
+  const { onNextStep } = store;
 
-export const LocationPage = ({ onScreenClick }: LocationPageProps) => {
+  const handleScreenClick: MouseEventHandler = ({ clientX }) => {
+    if (!windowWidth) return;
+    const clickedRightHalf = clientX >= windowWidth / 2;
+
+    if (clickedRightHalf) {
+      onNextStep();
+    }
+  };
+
   return (
     <div
       className='bg-[url(/location-background.png)] w-full h-screen bg-cover bg-center px-4 py-6 relative flex flex-col items-center'
-      onClick={onScreenClick}
+      onClick={handleScreenClick}
     >
       <NavigationArrowGroup showNext />
       <span className='inline-block -rotate-[12.27deg] text-big absolute left-6 @sm:left-9 top-30 @sm:top-39.5'>

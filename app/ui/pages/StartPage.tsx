@@ -2,24 +2,32 @@
 
 import clsx from 'clsx';
 import { MouseEventHandler, useState } from 'react';
+import { useWindowWidth } from '../../lib/hooks';
+import { AppStore } from '@/app/lib/stores';
 
-type StartPageProps = {
-  guestName: string;
-  onScreenClick: MouseEventHandler;
-};
-
-export const StartPage = ({ guestName, onScreenClick }: StartPageProps) => {
+export const StartPage = ({ store }: { store: AppStore }) => {
   const [isParcelOpen, setIsParcelOpen] = useState(false);
   const handleOpenParcel = () => setIsParcelOpen(true);
+  const windowWidth = useWindowWidth();
+  const { onNextStep, guest } = store;
+
+  const handleScreenClick: MouseEventHandler = ({ clientX }) => {
+    if (!windowWidth) return;
+    const clickedRightHalf = clientX >= windowWidth / 2;
+
+    if (clickedRightHalf) {
+      onNextStep();
+    }
+  };
 
   return (
     <div className='h-screen w-full bg-[url(/main-photo.jpg)] bg-cover bg-top'>
       <OpenBackground
         isParcelOpen={isParcelOpen}
-        onScreenClick={onScreenClick}
+        onScreenClick={handleScreenClick}
       />
       <ClosedParcel
-        guestName={guestName}
+        guestName={guest.name}
         isParcelOpen={isParcelOpen}
         onOpen={handleOpenParcel}
       />

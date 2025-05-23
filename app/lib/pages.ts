@@ -7,4 +7,5 @@ export enum PAGES {
   ALCOHOL_STEP = 6,
   DRESS_CODE_STEP = 7,
   CONFIRMATION_STEP = 8,
+  CONFIRMED_STEP = 9,
 }

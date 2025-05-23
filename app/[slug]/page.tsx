@@ -1,5 +1,5 @@
 import { fetchGuests } from '@/app/lib/googleSheets';
-import { WrapperPage } from '@/app/ui/pages';
+import { NotFoundPage, WrapperPage } from '@/app/ui/pages';
 
 export async function generateStaticParams() {
   const guestsPages = await fetchGuests();
@@ -18,5 +18,5 @@ export default async function Page({
   const guestsPages = await fetchGuests();
   const guest = guestsPages.find((guest) => guest.slug === `/${slug}`);
 
-  return <WrapperPage guest={guest} />;
+  return guest ? <WrapperPage guest={guest} /> : <NotFoundPage />;
 }

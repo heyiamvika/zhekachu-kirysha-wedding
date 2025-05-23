@@ -4,8 +4,6 @@ export type Guest = {
   rowNumber: number;
 };
 
-export type Step = number;
-
 export type FormData = {
   transportation: string | null;
   hotel: string | null;
