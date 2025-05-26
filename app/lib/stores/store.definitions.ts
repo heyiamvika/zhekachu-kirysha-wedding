@@ -2,7 +2,7 @@ import { FormData, Guest } from '@/app/lib/definitions';
 import { createAppStore } from '@/app/lib/stores';
 
 export type Store = {
-  guest: Guest;
+  guest?: Guest;
   currentStep: number;
   formData: FormData;
 };

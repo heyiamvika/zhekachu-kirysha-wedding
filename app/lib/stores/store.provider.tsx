@@ -12,7 +12,7 @@ export const AppStoreContext = createContext<AppStoreApi | undefined>(
 export const AppStoreProvider = ({
   children,
   guest,
-}: { guest: Guest } & PropsWithChildren) => {
+}: { guest?: Guest } & PropsWithChildren) => {
   const storeRef = useRef<AppStoreApi | null>(null);
   if (storeRef.current === null) {
     storeRef.current = createAppStore(guest);

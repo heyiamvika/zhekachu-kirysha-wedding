@@ -14,7 +14,7 @@ const defaultInitState = {
   },
 };
 
-export const createAppStore = (guest: Guest) => {
+export const createAppStore = (guest?: Guest) => {
   const initState = { guest, ...defaultInitState };
 
   return createStore<AppStore>()((set) => ({

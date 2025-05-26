@@ -2,12 +2,13 @@
 
 import Image from 'next/image';
 import { ButtonGroup, NavigationArrowGroup } from '@/app/ui/components';
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, useState } from 'react';
 import { useWindowWidth } from '@/app/lib/hooks';
 import { Buttons } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
 import { submitGuestAnswers } from '@/app/lib/googleSheets';
 import { useAppStore } from '@/app/lib/stores';
+import { EmptyFieldModal } from '../modals';
 
 type Props = {
   text: string;
@@ -24,6 +25,9 @@ export const FormFieldPage = ({
   showNext,
   showPrev,
 }: Props) => {
+  const [isEmptyFieldModalOpen, setIsEmptyFieldModalOpen] =
+    useState<boolean>(false);
+
   const windowWidth = useWindowWidth();
   const store = useAppStore((state) => state);
 
@@ -36,8 +40,7 @@ export const FormFieldPage = ({
     if (!blockedFromClickingNext) {
       onNextStep();
     } else {
-      // TODO
-      alert('TODO: Show popup');
+      setIsEmptyFieldModalOpen(true);
     }
   };
 
@@ -72,22 +75,27 @@ export const FormFieldPage = ({
   };
 
   return (
-    <div
-      className='w-full h-screen flex flex-col justify-start items-center px-4 py-6'
-      onClick={handleScreenClick}
-    >
-      <div className='w-full mb-4'>
-        <NavigationArrowGroup showNext={showNext} showPrev={showPrev} />
+    <div>
+      <div
+        className='w-full h-screen flex flex-col justify-start items-center px-4 py-6'
+        onClick={handleScreenClick}
+      >
+        <div className='w-full mb-4'>
+          <NavigationArrowGroup showNext={showNext} showPrev={showPrev} />
+        </div>
+        <span className='text-center max-h-72'>{text}</span>
+        <div className='w-60 sm:w-full h-auto flex grow items-center justify-center'>
+          <Image src={imageSrc} alt={text} width={375} height={290} />
+        </div>
+        <ButtonGroup
+          buttons={buttons}
+          onSelect={handleBtnClick}
+          selectedValue={selectedValue}
+        />
       </div>
-      <span className='text-center max-h-72'>{text}</span>
-      <div className='w-60 sm:w-full h-auto flex grow items-center justify-center'>
-        <Image src={imageSrc} alt={text} width={375} height={290} />
-      </div>
-      <ButtonGroup
-        buttons={buttons}
-        onSelect={handleBtnClick}
-        selectedValue={selectedValue}
-      />
+      {isEmptyFieldModalOpen && (
+        <EmptyFieldModal onClose={() => setIsEmptyFieldModalOpen(false)} />
+      )}
     </div>
   );
 };

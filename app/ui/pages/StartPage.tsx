@@ -16,7 +16,6 @@ export const StartPage = () => {
     const clickedRightHalf = clientX >= windowWidth / 2;
 
     if (clickedRightHalf) {
-      console.log({ clickedRightHalf });
       onNextStep();
     }
   };
@@ -28,7 +27,7 @@ export const StartPage = () => {
         onScreenClick={handleScreenClick}
       />
       <ClosedParcel
-        guestName={guest.name}
+        guestName={guest!.name}
         isParcelOpen={isParcelOpen}
         onOpen={handleOpenParcel}
       />

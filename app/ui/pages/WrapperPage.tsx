@@ -16,8 +16,16 @@ const MOBILE_MAX_WIDTH = 430;
 
 export const WrapperPage = () => {
   const windowWidth = useWindowWidth();
-  const { currentStep } = useAppStore((state) => state);
+  const { currentStep, guest } = useAppStore((state) => state);
   const isDesktop = windowWidth && windowWidth > MOBILE_MAX_WIDTH;
+
+  if (isDesktop) {
+    return <DesktopPage />;
+  }
+
+  if (!guest) {
+    return <NotFoundPage />;
+  }
 
   return isDesktop ? <DesktopPage /> : renderStep(currentStep);
 };
