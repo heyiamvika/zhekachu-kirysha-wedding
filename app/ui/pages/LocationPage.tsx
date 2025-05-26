@@ -21,11 +21,11 @@ export const LocationPage = () => {
 
   return (
     <div
-      className='bg-[url(/location-background.png)] w-full h-screen bg-cover bg-center px-4 py-6 relative flex flex-col items-center'
+      className='bg-[url(/location-background.png)] w-full h-screen bg-cover bg-center p-6 relative flex flex-col items-center'
       onClick={handleScreenClick}
     >
       <NavigationArrowGroup showNext />
-      <span className='inline-block -rotate-[12.27deg] text-big absolute left-6 @sm:left-9 top-30 @sm:top-39.5'>
+      <span className='inline-block -rotate-[11.757deg] text-big absolute left-6 sm:left-10 top-24.25 sm:top-40'>
         локація
       </span>
       <Image
@@ -33,9 +33,9 @@ export const LocationPage = () => {
         alt='стрілка вниз'
         width={85}
         height={82}
-        className='absolute top-38 right-20 @sm:top-47 @sm:right-20'
+        className='absolute top-35 right-15 sm:top-47 sm:right-20 w-[85] h-[82]'
       />
-      <span className='w-full max-w-81.75 text-big text-center mt-auto mb-15 @sm:mb-26.75'>
+      <span className='w-[327] h-[138] text-center text-big mt-auto mb-20.75'>
         с. Раковець forest event
       </span>
     </div>
