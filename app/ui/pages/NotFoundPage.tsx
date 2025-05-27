@@ -8,7 +8,7 @@ export const NotFoundPage = () => {
   const slug = useSlug();
 
   return (
-    <div className='pb-15 h-screen w-full flex flex-col'>
+    <div className='pb-15 h-dvh w-full flex flex-col'>
       <div className='w-full flex px-27.5 justify-center'>
         <Image
           src='/not-found-kitty.png'

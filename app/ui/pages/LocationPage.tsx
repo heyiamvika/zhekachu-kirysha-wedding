@@ -21,7 +21,7 @@ export const LocationPage = () => {
 
   return (
     <div
-      className='bg-[url(/location-background.png)] w-full h-screen bg-cover bg-center p-6 relative flex flex-col items-center'
+      className='bg-[url(/location-background.png)] w-full h-dvh bg-cover bg-center p-6 relative flex flex-col items-center'
       onClick={handleScreenClick}
     >
       <NavigationArrowGroup showNext />

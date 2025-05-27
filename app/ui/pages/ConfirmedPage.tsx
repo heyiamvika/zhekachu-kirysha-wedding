@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export const ConfirmedPage = () => {
   return (
-    <div className='h-screen pt-10 pb-15 flex flex-col'>
+    <div className='h-dvh pt-10 pb-15 flex flex-col'>
       <div className='px-19.5'>
         <Image
           src='/fireworks.png'

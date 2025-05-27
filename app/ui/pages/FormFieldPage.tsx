@@ -77,7 +77,7 @@ export const FormFieldPage = ({
   return (
     <div>
       <div
-        className='w-full h-screen flex flex-col px-4 pt-6 pb-8'
+        className='w-full h-dvh flex flex-col px-4 pt-6 pb-8'
         onClick={handleScreenClick}
       >
         <NavigationArrowGroup showNext={showNext} showPrev={showPrev} />

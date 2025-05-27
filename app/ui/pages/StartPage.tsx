@@ -21,7 +21,7 @@ export const StartPage = () => {
   // };
 
   return (
-    <div className='h-screen w-full bg-[url(/main-photo.jpg)] bg-cover bg-top'>
+    <div className='h-dvh w-full bg-[url(/main-photo.jpg)] bg-cover bg-top'>
       {/* <OpenBackground
         isParcelOpen={isParcelOpen}
         onScreenClick={handleScreenClick}
@@ -61,7 +61,7 @@ export const StartPage = () => {
 //       />
 //       <div
 //         className={clsx(
-//           'bg-[url(/envelope-bottom.png)] bg-cover bg-center absolute bottom-0 w-full h-screen flex items-end justify-center',
+//           'bg-[url(/envelope-bottom.png)] bg-cover bg-center absolute bottom-0 w-full flex items-end justify-center',
 //           {
 //             [`${animationStyles} translate-y-[100%]`]: isParcelOpen,
 //           }
@@ -87,7 +87,7 @@ export const StartPage = () => {
 //   return (
 //     <div
 //       className={clsx(
-//         'absolute top-0 h-screen w-full text-white text-big flex flex-col items-center text-center py-10 sm:py-20 justify-between bg-black/20',
+//         'absolute top-0 w-full text-white text-big flex flex-col items-center text-center py-10 sm:py-20 justify-between bg-black/20',
 //         { 'animate-fade-in': isParcelOpen }
 //       )}
 //       onClick={onScreenClick}
