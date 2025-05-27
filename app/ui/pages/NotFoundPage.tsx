@@ -1,14 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import { Button } from '@/app/ui/components/Button';
 import { useSlug } from '@/app/lib/hooks';
-import Link from 'next/link';
+import { ButtonLink } from '@/app/ui/components';
 
 export const NotFoundPage = () => {
   const slug = useSlug();
-
-  console.log({ slug });
 
   return (
     <div className='pb-15 h-screen w-full flex flex-col'>
@@ -28,11 +25,7 @@ export const NotFoundPage = () => {
         </span>
       </div>
       <div className='w-full flex justify-center'>
-        <Button
-          value='Так, виведи мене!'
-          onClick={() => console.log('click')}
-        />
-        {slug && <Link href={slug}>Так, виведи мене</Link>}
+        {slug && <ButtonLink href={slug}>Так, виведи мене</ButtonLink>}
       </div>
     </div>
   );
