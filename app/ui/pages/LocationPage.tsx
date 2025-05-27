@@ -33,7 +33,6 @@ export const LocationPage = () => {
         alt='стрілка вниз'
         width={85}
         height={82}
-        priority
         className='absolute top-35 right-15 sm:top-47 sm:right-20 w-[85] h-[82]'
       />
       <span className='w-[327] h-[138] text-center text-big mt-auto mb-20.75'>
