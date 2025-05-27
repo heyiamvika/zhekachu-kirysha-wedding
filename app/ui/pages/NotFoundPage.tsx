@@ -16,6 +16,7 @@ export const NotFoundPage = () => {
           width={100}
           height={78}
           className='min-w-[100] max-w-[180] min-h-[78] max-h-[141] grow'
+          priority
         />
       </div>
       <div className='text-center flex flex-col gap-6 items-center justify-center grow px-4'>

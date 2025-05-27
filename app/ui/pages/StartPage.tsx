@@ -62,6 +62,8 @@ const ClosedParcel = ({
           width={375}
           height={399}
           className='w-full object-cover'
+          priority
+          quality={25}
         />
       </div>
       <div
