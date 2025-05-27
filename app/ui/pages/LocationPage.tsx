@@ -21,7 +21,7 @@ export const LocationPage = () => {
 
   return (
     <div
-      className='bg-[url(/location-background.png)] w-full h-dvh bg-cover bg-center p-6 relative flex flex-col items-center'
+      className='bg-[url(/location-background.webp)] w-full h-dvh bg-cover bg-center p-6 relative flex flex-col items-center'
       onClick={handleScreenClick}
     >
       <NavigationArrowGroup showNext />
@@ -29,10 +29,11 @@ export const LocationPage = () => {
         локація
       </span>
       <Image
-        src='/arrow-down.png'
+        src='/arrow-down.webp'
         alt='стрілка вниз'
         width={85}
         height={82}
+        priority
         className='absolute top-35 right-15 sm:top-47 sm:right-20 w-[85] h-[82]'
       />
       <span className='w-[327] h-[138] text-center text-big mt-auto mb-20.75'>

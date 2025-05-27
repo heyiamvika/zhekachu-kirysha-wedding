@@ -5,7 +5,7 @@ export const ConfirmedPage = () => {
     <div className='h-dvh pt-10 pb-15 flex flex-col'>
       <div className='px-19.5'>
         <Image
-          src='/fireworks.png'
+          src='/fireworks.webp'
           alt='Феєрверки'
           width={164}
           height={105}

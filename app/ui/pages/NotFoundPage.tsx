@@ -11,7 +11,7 @@ export const NotFoundPage = () => {
     <div className='pb-15 h-dvh w-full flex flex-col'>
       <div className='w-full flex px-27.5 justify-center'>
         <Image
-          src='/not-found-kitty.png'
+          src='/not-found-kitty.webp'
           alt='Кошенятко головою вниз'
           width={100}
           height={78}

@@ -41,7 +41,7 @@ const renderStep = (currentStep: number) => {
       return (
         <FormFieldPage
           text='ми будемо разом їхати автобусом, але якщо ти своїм ходом - клікай!'
-          imageSrc='/transportation.svg'
+          imageSrc='/transportation.webp'
           buttons={{
             formFieldKey: 'transportation',
             options: ['їду з вами', 'своїм ходом'],
@@ -56,7 +56,7 @@ const renderStep = (currentStep: number) => {
           showNext
           showPrev
           text='а ще ми залишаємось ночувати на локації, ти з нами?'
-          imageSrc='/hotel.svg'
+          imageSrc='/hotel.webp'
           buttons={{
             formFieldKey: 'hotel',
             options: ['офкорс!', 'їду до себе'],
@@ -69,7 +69,7 @@ const renderStep = (currentStep: number) => {
           showNext
           showPrev
           text='ми хочемо, щоб всім було смачно, тому підкажи, чи є в тебе алергії чи особисті дієти?'
-          imageSrc='/allergies.svg'
+          imageSrc='/allergies.webp'
           buttons={{
             formFieldKey: 'allergies',
             options: ['я їм все!', 'так, я напишу'],
@@ -82,7 +82,7 @@ const renderStep = (currentStep: number) => {
           showNext
           showPrev
           text='і чи можна тобі алкоголь?'
-          imageSrc='/alcohol.svg'
+          imageSrc='/alcohol.webp'
           buttons={{
             formFieldKey: 'alcohol',
             options: ['наливайте!', 'ні, я по 0%'],
@@ -95,7 +95,7 @@ const renderStep = (currentStep: number) => {
           showNext
           showPrev
           text='до речі, в нас нема дрескоду, але якщо є вишиванки - їх час вигуляти'
-          imageSrc='/vyshyvanka.svg'
+          imageSrc='/vyshyvanka.webp'
         />
       );
     case PAGES.CONFIRMATION_STEP:
@@ -103,7 +103,7 @@ const renderStep = (currentStep: number) => {
         <FormFieldPage
           showPrev
           text='чекаємо на твоє завітне “так!”'
-          imageSrc='/lovebirds.svg'
+          imageSrc='/lovebirds.webp'
           buttons={{ formFieldKey: 'confirmation', options: ['я буду!'] }}
         />
       );

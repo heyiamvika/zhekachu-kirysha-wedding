@@ -52,7 +52,7 @@ const ClosedParcel = ({
     <>
       <div
         onClick={onOpen}
-        className={clsx('drop-shadow-2xl w-full h-100 absolute top-0 z-10', {
+        className={clsx('drop-shadow-2xl w-full h-fit absolute top-0 z-10', {
           [`${animationStyles} -translate-y-full`]: isParcelOpen,
         })}
       >
