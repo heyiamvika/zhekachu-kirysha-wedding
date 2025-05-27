@@ -22,15 +22,15 @@ export const StartPage = () => {
 
   return (
     <div className='h-screen w-full bg-[url(/main-photo.jpg)] bg-cover bg-top'>
-      <OpenBackground
+      {/* <OpenBackground
         isParcelOpen={isParcelOpen}
         onScreenClick={handleScreenClick}
-      />
-      <ClosedParcel
+      /> */}
+      {/* <ClosedParcel
         guestName={guest!.name}
         isParcelOpen={isParcelOpen}
         onOpen={handleOpenParcel}
-      />
+      /> */}
     </div>
   );
 };
