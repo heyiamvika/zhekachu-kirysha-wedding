@@ -91,6 +91,8 @@ const OpenBackground = ({
   isParcelOpen,
   onScreenClick,
 }: OpenBackgroundProps) => {
+  if (!isParcelOpen) return null;
+
   return (
     <div
       className={clsx(

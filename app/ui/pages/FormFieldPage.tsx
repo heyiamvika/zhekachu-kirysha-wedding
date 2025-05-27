@@ -84,9 +84,9 @@ export const FormFieldPage = ({
         <div className='flex flex-col items-center justify-center grow'>
           <div className='flex flex-col justify-between items-center min-w-[288] max-w-[450] min-h-[472] max-h-[660] grow'>
             <span className='text-center py-6.25'>{text}</span>
-            <div className='w-full min-h-[150] max-h-[235] grow px-15'>
+            <div className='w-full min-h-[150] max-h-[235] grow px-10'>
               <div className='relative w-full h-full'>
-                <Image src={imageSrc} alt={text} fill />
+                <Image src={imageSrc} alt={text} fill priority />
               </div>
             </div>
             <ButtonGroup
