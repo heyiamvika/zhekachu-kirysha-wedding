@@ -1,13 +1,15 @@
 'use server';
 
-import path from 'path';
 import { google, sheets_v4 } from 'googleapis';
 import { Guest } from '@/app/lib/definitions';
 import { AppStore } from './stores';
 
 const authAndGetSheets = (): sheets_v4.Sheets => {
   const auth = new google.auth.GoogleAuth({
-    keyFile: path.join(process.cwd(), 'credentials.json'),
+    credentials: {
+      client_email: process.env.GOOGLE_CLIENT_EMAIL,
+      private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+    },
     scopes: ['https://www.googleapis.com/auth/spreadsheets'],
   });
   const sheets = google.sheets({ version: 'v4', auth });
