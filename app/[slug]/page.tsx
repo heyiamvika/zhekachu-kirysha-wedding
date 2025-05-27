@@ -1,6 +1,7 @@
 import { fetchGuests } from '@/app/lib/googleSheets';
 import { WrapperPage } from '@/app/ui/pages';
-import { AppStoreProvider } from '@/app/lib/stores';
+import { AppStoreProvider } from '@/app/lib/providers';
+import { SlugProvider } from '../lib/providers/SlugProvider';
 
 export async function generateStaticParams() {
   const guestsPages = await fetchGuests();
@@ -20,8 +21,10 @@ export default async function Page({
   const guest = guestsPages.find((guest) => guest.slug === `/${slug}`);
 
   return (
-    <AppStoreProvider guest={guest}>
-      <WrapperPage />
-    </AppStoreProvider>
+    <SlugProvider guest={guest}>
+      <AppStoreProvider guest={guest}>
+        <WrapperPage />
+      </AppStoreProvider>
+    </SlugProvider>
   );
 }

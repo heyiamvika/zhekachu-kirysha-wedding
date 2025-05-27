@@ -9,7 +9,7 @@ import {
   StartPage,
 } from '@/app/ui/pages';
 import { useWindowWidth } from '@/app/lib/hooks';
-import { useAppStore } from '@/app/lib/stores';
+import { useAppStore } from '@/app/lib/hooks';
 import { PAGES } from '@/app/lib/pages';
 
 const MOBILE_MAX_WIDTH = 430;
@@ -17,6 +17,7 @@ const MOBILE_MAX_WIDTH = 430;
 export const WrapperPage = () => {
   const windowWidth = useWindowWidth();
   const { currentStep, guest } = useAppStore((state) => state);
+
   const isDesktop = windowWidth && windowWidth > MOBILE_MAX_WIDTH;
 
   if (isDesktop) {
@@ -27,7 +28,7 @@ export const WrapperPage = () => {
     return <NotFoundPage />;
   }
 
-  return isDesktop ? <DesktopPage /> : renderStep(currentStep);
+  return renderStep(currentStep);
 };
 
 const renderStep = (currentStep: number) => {

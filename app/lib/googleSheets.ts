@@ -45,6 +45,8 @@ export const fetchGuests = async (): Promise<Guest[]> => {
 };
 
 export const submitGuestAnswers = async ({ guest, formData }: AppStore) => {
+  if (!guest) return;
+
   try {
     const sheets = authAndGetSheets();
     const { rowNumber } = guest;

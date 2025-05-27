@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import { MouseEventHandler, useState } from 'react';
 import { useWindowWidth } from '../../lib/hooks';
-import { useAppStore } from '@/app/lib/stores';
+import { useAppStore } from '@/app/lib/hooks';
 
 export const StartPage = () => {
   const [isParcelOpen, setIsParcelOpen] = useState(false);

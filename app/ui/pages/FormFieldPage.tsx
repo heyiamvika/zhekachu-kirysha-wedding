@@ -7,7 +7,7 @@ import { useWindowWidth } from '@/app/lib/hooks';
 import { Buttons } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
 import { submitGuestAnswers } from '@/app/lib/googleSheets';
-import { useAppStore } from '@/app/lib/stores';
+import { useAppStore } from '@/app/lib/hooks';
 import { EmptyFieldModal } from '../modals';
 
 type Props = {

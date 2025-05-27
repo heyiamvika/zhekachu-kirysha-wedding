@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { NavigationArrowGroup } from '@/app/ui/components';
 import { useWindowWidth } from '@/app/lib/hooks';
 import { MouseEventHandler } from 'react';
-import { useAppStore } from '@/app/lib/stores';
+import { useAppStore } from '@/app/lib/hooks';
 
 export const LocationPage = () => {
   const windowWidth = useWindowWidth();
