@@ -77,21 +77,25 @@ export const FormFieldPage = ({
   return (
     <div>
       <div
-        className='w-full h-screen flex flex-col justify-start items-center px-4 py-6'
+        className='w-full h-screen flex flex-col px-4 pt-6 pb-8'
         onClick={handleScreenClick}
       >
-        <div className='w-full mb-4'>
-          <NavigationArrowGroup showNext={showNext} showPrev={showPrev} />
+        <NavigationArrowGroup showNext={showNext} showPrev={showPrev} />
+        <div className='flex flex-col items-center justify-center grow'>
+          <div className='flex flex-col justify-between items-center min-w-[288] max-w-[450] min-h-[472] max-h-[660] grow'>
+            <span className='text-center py-6.25'>{text}</span>
+            <div className='w-full min-h-[150] max-h-[235] grow px-15'>
+              <div className='relative w-full h-full'>
+                <Image src={imageSrc} alt={text} fill />
+              </div>
+            </div>
+            <ButtonGroup
+              buttons={buttons}
+              onSelect={handleBtnClick}
+              selectedValue={selectedValue}
+            />
+          </div>
         </div>
-        <span className='text-center max-h-72'>{text}</span>
-        <div className='w-60 sm:w-full h-auto flex grow items-center justify-center'>
-          <Image src={imageSrc} alt={text} width={375} height={290} />
-        </div>
-        <ButtonGroup
-          buttons={buttons}
-          onSelect={handleBtnClick}
-          selectedValue={selectedValue}
-        />
       </div>
       {isEmptyFieldModalOpen && (
         <EmptyFieldModal onClose={() => setIsEmptyFieldModalOpen(false)} />

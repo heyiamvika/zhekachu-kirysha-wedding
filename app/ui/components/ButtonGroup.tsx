@@ -14,7 +14,7 @@ export const ButtonGroup = ({
   onSelect,
 }: ButtonGroupProps) => {
   return (
-    <div className='w-full px-4 flex flex-col gap-2 sm:gap-4 items-center justify-start mb-2 sm:mb-20'>
+    <div className='w-full min-h-[96] flex flex-col items-center gap-4'>
       {buttons?.options.map((value) => (
         <Button
           key={value}
