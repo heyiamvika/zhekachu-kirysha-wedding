@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en' className={`${inspiration.className} antialiased`}>
+    <html lang='en' className={`${inspiration.className} antialiased h-screen`}>
       <body>{children}</body>
     </html>
   );
