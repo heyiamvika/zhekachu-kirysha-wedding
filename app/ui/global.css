@@ -24,7 +24,7 @@
 body {
   @apply bg-cover;
   @apply font-extrabold;
-  background-image: url('@/public/background.png');
+  background-image: url('/background.png');
   color: var(--color-foreground);
   font-family: var(--font-custom), Arial, Helvetica, sans-serif;
   font-size: var(--text-standard);
