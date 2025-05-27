@@ -21,7 +21,7 @@ export const StartPage = () => {
   };
 
   return (
-    <div className='h-dvh w-full bg-[url(/main-photo.jpg)] bg-cover bg-top overflow-hidden relative'>
+    <div className='h-dvh w-full bg-[url(/main-photo.webp)] bg-cover bg-top overflow-hidden relative'>
       <OpenBackground
         isParcelOpen={isParcelOpen}
         onScreenClick={handleScreenClick}
@@ -52,7 +52,7 @@ const ClosedParcel = ({
     <>
       <div
         onClick={onOpen}
-        className={clsx('drop-shadow-2xl w-full absolute top-0 z-10', {
+        className={clsx('drop-shadow-2xl w-full h-100 absolute top-0 z-10', {
           [`${animationStyles} -translate-y-full`]: isParcelOpen,
         })}
       >
@@ -60,7 +60,7 @@ const ClosedParcel = ({
           src='/envelope-top.svg'
           alt='Клапан конверта'
           width={375}
-          height={399}
+          height={400}
           className='w-full object-cover'
           priority
           quality={25}
@@ -68,7 +68,7 @@ const ClosedParcel = ({
       </div>
       <div
         className={clsx(
-          'absolute bottom-0 bg-[url(/envelope-bottom.png)]  w-full h-full bg-cover bg-center flex items-end justify-center',
+          'absolute bottom-0 bg-[url(/envelope-bottom.webp)]  w-full h-full bg-cover bg-center flex items-end justify-center',
           {
             [`${animationStyles} translate-y-full`]: isParcelOpen,
           }
