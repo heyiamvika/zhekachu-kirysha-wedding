@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import { ButtonGroup, NavigationArrowGroup } from '@/app/ui/components';
 import { MouseEventHandler, useState } from 'react';
 import { useWindowWidth } from '@/app/lib/hooks';
@@ -12,7 +12,7 @@ import { EmptyFieldModal } from '../modals';
 
 type Props = {
   text: string;
-  imageSrc: string;
+  imageSrc: StaticImageData;
   buttons?: Buttons;
   showNext?: boolean;
   showPrev?: boolean;
@@ -86,7 +86,7 @@ export const FormFieldPage = ({
             <span className='text-center py-6.25'>{text}</span>
             <div className='w-full min-h-[150] max-h-[235] grow px-10'>
               <div className='relative w-full h-full'>
-                <Image src={imageSrc} alt={text} fill priority />
+                <Image src={imageSrc} alt={text} fill priority key={text} />
               </div>
             </div>
             <ButtonGroup
