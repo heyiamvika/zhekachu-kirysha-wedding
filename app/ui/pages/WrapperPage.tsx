@@ -20,11 +20,7 @@ import vyshyvankaImg from '@/public/vyshyvanka.webp';
 import lovebirdsImg from '@/public/lovebirds.webp';
 
 export const WrapperPage = () => {
-  const { currentStep, guest } = useAppStore((state) => state);
-
-  if (!guest) {
-    return <NotFoundPage />;
-  }
+  const { currentStep } = useAppStore((state) => state);
 
   return <ImagePreloader>{renderStep(currentStep)}</ImagePreloader>;
 };

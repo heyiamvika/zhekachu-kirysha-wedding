@@ -1,5 +1,5 @@
 import { fetchGuests } from '@/app/lib/googleSheets';
-import { DesktopPage, WrapperPage } from '@/app/ui/pages';
+import { DesktopPage, NotFoundPage, WrapperPage } from '@/app/ui/pages';
 import { AppStoreProvider, SlugProvider } from '@/app/lib/providers';
 import { headers } from 'next/headers';
 import { userAgent } from 'next/server';
@@ -26,6 +26,10 @@ export default async function Page({
 
   if (!isMobile) {
     return <DesktopPage />;
+  }
+
+  if (!guest) {
+    return <NotFoundPage />;
   }
 
   return (
