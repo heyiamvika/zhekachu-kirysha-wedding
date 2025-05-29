@@ -19,12 +19,12 @@ export default async function Page({
   const { slug } = await params;
   const userAgentHeaders = await headers();
   const ua = userAgent({ headers: userAgentHeaders });
-  const isDesktop = ua.device.type === 'desktop';
+  const isMobile = ua.device.type === 'mobile';
 
   const guestsPages = await fetchGuests();
   const guest = guestsPages.find((guest) => guest.slug === `/${slug}`);
 
-  if (isDesktop) {
+  if (!isMobile) {
     return <DesktopPage />;
   }
 
