@@ -1,11 +1,13 @@
 import Image from 'next/image';
 
+import fireworksImg from '@/public/fireworks.webp';
+
 export const ConfirmedPage = () => {
   return (
     <div className='h-dvh pt-10 pb-15 flex flex-col'>
       <div className='px-19.5'>
         <Image
-          src='/fireworks.webp'
+          src={fireworksImg}
           alt='Феєрверки'
           width={164}
           height={105}

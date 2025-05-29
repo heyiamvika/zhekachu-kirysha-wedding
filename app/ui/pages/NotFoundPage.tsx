@@ -4,6 +4,8 @@ import Image from 'next/image';
 import { useSlug } from '@/app/lib/hooks';
 import { ButtonLink } from '@/app/ui/components';
 
+import notFoundKittyImg from '@/public/not-found-kitty.webp';
+
 export const NotFoundPage = () => {
   const slug = useSlug();
 
@@ -11,7 +13,7 @@ export const NotFoundPage = () => {
     <div className='pb-15 h-dvh w-full flex flex-col'>
       <div className='w-full flex px-27.5 justify-center'>
         <Image
-          src='/not-found-kitty.webp'
+          src={notFoundKittyImg}
           alt='Кошенятко головою вниз'
           width={100}
           height={78}

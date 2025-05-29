@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { MouseEventHandler, useState } from 'react';
 import { useAppStore, useWindowWidth } from '@/app/lib/hooks';
 
+import envelopeTopImg from '@/public/envelope-top.svg';
+
 export const StartPage = () => {
   const [isParcelOpen, setIsParcelOpen] = useState(false);
 
@@ -57,7 +59,7 @@ const ClosedParcel = ({
         })}
       >
         <Image
-          src='/envelope-top.svg'
+          src={envelopeTopImg}
           alt='Клапан конверта'
           width={375}
           height={400}

@@ -6,6 +6,8 @@ import { useWindowWidth } from '@/app/lib/hooks';
 import { MouseEventHandler } from 'react';
 import { useAppStore } from '@/app/lib/hooks';
 
+import arrowDownImage from '@/public/arrow-down.webp';
+
 export const LocationPage = () => {
   const windowWidth = useWindowWidth();
   const { onNextStep } = useAppStore((state) => state);
@@ -29,7 +31,7 @@ export const LocationPage = () => {
         локація
       </span>
       <Image
-        src='/arrow-down.webp'
+        src={arrowDownImage}
         alt='стрілка вниз'
         width={85}
         height={82}

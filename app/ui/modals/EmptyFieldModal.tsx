@@ -1,6 +1,9 @@
 import { MouseEventHandler } from 'react';
 import Image from 'next/image';
 
+import kittyImg from '@/public/kitty.webp';
+import arrowPopupImg from '@/public/arrow-popup.svg';
+
 export const EmptyFieldModal = ({
   onClose,
 }: {
@@ -15,15 +18,9 @@ export const EmptyFieldModal = ({
         <span className='text-center text-popup'>
           Будь ласка, вибери один з варіантів!
         </span>
+        <Image src={kittyImg} width={89} height={89} alt='Кошенятко' priority />
         <Image
-          src='/kitty.webp'
-          width={89}
-          height={89}
-          alt='Кошенятко'
-          priority
-        />
-        <Image
-          src='/arrow-popup.svg'
+          src={arrowPopupImg}
           alt='стрілка вниз'
           width={35}
           height={34}
