@@ -8,6 +8,7 @@ import alcoholImg from '@/public/alcohol.webp';
 import vyshyvankaImg from '@/public/vyshyvanka.webp';
 import lovebirdsImg from '@/public/lovebirds.webp';
 import envelopeTopImg from '@/public/envelope-top.svg';
+import locationImg from '@/public/location-background.webp';
 import kittyImg from '@/public/kitty.webp';
 import arrowPopupImg from '@/public/arrow-popup.svg';
 import fireworksImg from '@/public/fireworks.webp';
@@ -22,13 +23,14 @@ export const ImagePreloader = ({ children }: PropsWithChildren) => {
           */}
       <div className='hidden'>
         <Image
-          priority
           src={envelopeTopImg}
           alt='Envelope top preload'
           width={375}
           height={400}
           quality={25}
+          priority
         />
+        <Image src={locationImg} alt='Location preload' fill priority />
         <Image
           src={kittyImg}
           width={89}
@@ -47,44 +49,13 @@ export const ImagePreloader = ({ children }: PropsWithChildren) => {
           src={transportationImg}
           alt='Transportation preload'
           fill
-          sizes='(max-width: 768px) 100vw, 50vw'
           priority
         />
-        <Image
-          src={hotelImg}
-          alt='Hotel preload'
-          fill
-          sizes='(max-width: 768px) 100vw, 50vw'
-          priority
-        />
-        <Image
-          src={allergiesImg}
-          alt='Allergies preload'
-          fill
-          sizes='(max-width: 768px) 100vw, 50vw'
-          priority
-        />
-        <Image
-          src={alcoholImg}
-          alt='Alcohol preload'
-          fill
-          sizes='(max-width: 768px) 100vw, 50vw'
-          priority
-        />
-        <Image
-          src={vyshyvankaImg}
-          alt='Vyshyvanka preload'
-          fill
-          sizes='(max-width: 768px) 100vw, 50vw'
-          priority
-        />
-        <Image
-          src={lovebirdsImg}
-          alt='Confirmation preload'
-          fill
-          sizes='(max-width: 768px) 100vw, 50vw'
-          priority
-        />
+        <Image src={hotelImg} alt='Hotel preload' fill priority />
+        <Image src={allergiesImg} alt='Allergies preload' fill priority />
+        <Image src={alcoholImg} alt='Alcohol preload' fill priority />
+        <Image src={vyshyvankaImg} alt='Vyshyvanka preload' fill priority />
+        <Image src={lovebirdsImg} alt='Confirmation preload' fill priority />
         <Image
           src={fireworksImg}
           alt='Fireworks preload'

@@ -6,6 +6,7 @@ import { MouseEventHandler } from 'react';
 import { useAppStore } from '@/app/lib/hooks';
 
 import arrowDownImage from '@/public/arrow-down.webp';
+import locationImage from '@/public/location-background.webp';
 
 export const LocationPage = () => {
   const { onNextStep } = useAppStore((state) => state);
@@ -24,9 +25,10 @@ export const LocationPage = () => {
 
   return (
     <div
-      className='bg-[url(/location-background.webp)] w-full h-dvh bg-cover bg-center p-6 relative flex flex-col items-center'
+      className='w-full h-dvh p-6 relative flex flex-col items-center'
       onClick={handleScreenClick}
     >
+      <Image src={locationImage} fill alt='Локація' className='-z-10' />
       <NavigationArrowGroup showNext />
       <span className='inline-block -rotate-[11.757deg] text-big absolute left-6 sm:left-10 top-24.25 sm:top-40'>
         локація
