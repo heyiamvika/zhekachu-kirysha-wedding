@@ -3,12 +3,11 @@
 import Image, { StaticImageData } from 'next/image';
 import { ButtonGroup, NavigationArrowGroup } from '@/app/ui/components';
 import { MouseEventHandler, useState } from 'react';
-import { useWindowWidth } from '@/app/lib/hooks';
 import { Buttons } from '@/app/lib/definitions';
 import { PAGES } from '@/app/lib/pages';
 import { submitGuestAnswers } from '@/app/lib/googleSheets';
 import { useAppStore } from '@/app/lib/hooks';
-import { EmptyFieldModal } from '../modals';
+import { EmptyFieldModal } from '@/app/ui/modals';
 
 type Props = {
   text: string;
@@ -28,7 +27,6 @@ export const FormFieldPage = ({
   const [isEmptyFieldModalOpen, setIsEmptyFieldModalOpen] =
     useState<boolean>(false);
 
-  const windowWidth = useWindowWidth();
   const store = useAppStore((state) => state);
 
   const { onNextStep, onPrevStep, onFormFieldSet, formData, currentStep } =
@@ -44,10 +42,13 @@ export const FormFieldPage = ({
     }
   };
 
-  const handleScreenClick: MouseEventHandler = ({ clientX }) => {
-    if (!windowWidth) return;
+  const handleScreenClick: MouseEventHandler = ({
+    currentTarget: element,
+    clientX,
+  }) => {
+    const screenWidth = element.getBoundingClientRect().width;
+    const clickedLeftHalf = clientX < screenWidth / 2;
 
-    const clickedLeftHalf = clientX < windowWidth / 2;
     return clickedLeftHalf ? onPrevStep() : handleClickNext();
   };
 

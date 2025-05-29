@@ -3,19 +3,20 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import { MouseEventHandler, useState } from 'react';
-import { useAppStore, useWindowWidth } from '@/app/lib/hooks';
+import { useAppStore } from '@/app/lib/hooks';
 
 import envelopeTopImg from '@/public/envelope-top.svg';
 
 export const StartPage = () => {
   const [isParcelOpen, setIsParcelOpen] = useState(false);
-
-  const windowWidth = useWindowWidth();
   const { onNextStep, guest } = useAppStore((state) => state);
 
-  const handleScreenClick: MouseEventHandler = ({ clientX }) => {
-    if (!windowWidth) return;
-    const clickedRightHalf = clientX >= windowWidth / 2;
+  const handleScreenClick: MouseEventHandler = ({
+    currentTarget: element,
+    clientX,
+  }) => {
+    const screenWidth = element.getBoundingClientRect().width;
+    const clickedRightHalf = clientX >= screenWidth / 2;
 
     if (clickedRightHalf) {
       onNextStep();

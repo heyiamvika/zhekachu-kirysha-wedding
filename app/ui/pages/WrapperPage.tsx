@@ -2,7 +2,6 @@
 
 import {
   ConfirmedPage,
-  DesktopPage,
   FormFieldPage,
   LocationPage,
   NotFoundPage,
@@ -10,7 +9,7 @@ import {
 } from '@/app/ui/pages';
 import { ImagePreloader } from '@/app/ui/components';
 
-import { useWindowWidth, useAppStore } from '@/app/lib/hooks';
+import { useAppStore } from '@/app/lib/hooks';
 import { PAGES } from '@/app/lib/pages';
 
 import transportationImg from '@/public/transportation.webp';
@@ -20,17 +19,8 @@ import alcoholImg from '@/public/alcohol.webp';
 import vyshyvankaImg from '@/public/vyshyvanka.webp';
 import lovebirdsImg from '@/public/lovebirds.webp';
 
-const MOBILE_MAX_WIDTH = 430;
-
 export const WrapperPage = () => {
-  const windowWidth = useWindowWidth();
   const { currentStep, guest } = useAppStore((state) => state);
-
-  const isDesktop = windowWidth && windowWidth > MOBILE_MAX_WIDTH;
-
-  if (isDesktop) {
-    return <DesktopPage />;
-  }
 
   if (!guest) {
     return <NotFoundPage />;
