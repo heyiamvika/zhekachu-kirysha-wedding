@@ -8,6 +8,7 @@ import alcoholImg from '@/public/alcohol.webp';
 import vyshyvankaImg from '@/public/vyshyvanka.webp';
 import lovebirdsImg from '@/public/lovebirds.webp';
 import envelopeTopImg from '@/public/envelope-top.svg';
+import envelopeBottomImg from '@/public/envelope-bottom.webp';
 import locationImg from '@/public/location-background.webp';
 import kittyImg from '@/public/kitty.webp';
 import arrowPopupImg from '@/public/arrow-popup.svg';
@@ -28,6 +29,12 @@ export const ImagePreloader = ({ children }: PropsWithChildren) => {
           width={375}
           height={400}
           quality={25}
+          priority
+        />
+        <Image
+          src={envelopeBottomImg}
+          alt='Envelope bottom preload'
+          fill
           priority
         />
         <Image src={locationImg} alt='Location preload' fill priority />

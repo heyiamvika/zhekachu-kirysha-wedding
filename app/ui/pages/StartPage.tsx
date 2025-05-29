@@ -6,6 +6,7 @@ import { MouseEventHandler, useState } from 'react';
 import { useAppStore } from '@/app/lib/hooks';
 
 import envelopeTopImg from '@/public/envelope-top.svg';
+import envelopeBottomImg from '@/public/envelope-bottom.webp';
 
 export const StartPage = () => {
   const [isParcelOpen, setIsParcelOpen] = useState(false);
@@ -70,13 +71,14 @@ const ClosedParcel = ({
       </div>
       <div
         className={clsx(
-          'absolute bottom-0 bg-[url(/envelope-bottom.webp)]  w-full h-full bg-cover bg-center flex items-end justify-center',
+          'absolute bottom-0 w-full h-dvh flex items-end justify-center',
           {
             [`${animationStyles} translate-y-full`]: isParcelOpen,
           }
         )}
       >
-        <span className='text-big mb-[15vh] sm:mb-[25vh] max-w-[80%] text-center'>
+        <Image src={envelopeBottomImg} fill alt='Низ конверта' />
+        <span className='text-big w-[375] text-center mb-[102] z-10'>
           {`Привіт, ${guestName}!`}
         </span>
       </div>
