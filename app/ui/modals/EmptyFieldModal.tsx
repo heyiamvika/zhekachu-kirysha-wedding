@@ -18,14 +18,13 @@ export const EmptyFieldModal = ({
         <span className='text-center text-popup'>
           Будь ласка, вибери один з варіантів!
         </span>
-        <Image src={kittyImg} width={89} height={89} alt='Кошенятко' priority />
+        <Image src={kittyImg} width={89} height={89} alt='Кошенятко' />
         <Image
           src={arrowPopupImg}
           alt='стрілка вниз'
           width={35}
           height={34}
           className='absolute left-[87] bottom-[27] w-[35] h-[34]'
-          priority
         />
       </div>
     </div>

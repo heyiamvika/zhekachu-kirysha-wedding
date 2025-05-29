@@ -8,8 +8,9 @@ import {
   NotFoundPage,
   StartPage,
 } from '@/app/ui/pages';
-import { useWindowWidth } from '@/app/lib/hooks';
-import { useAppStore } from '@/app/lib/hooks';
+import { ImagePreloader } from '@/app/ui/components';
+
+import { useWindowWidth, useAppStore } from '@/app/lib/hooks';
 import { PAGES } from '@/app/lib/pages';
 
 import transportationImg from '@/public/transportation.webp';
@@ -35,7 +36,7 @@ export const WrapperPage = () => {
     return <NotFoundPage />;
   }
 
-  return renderStep(currentStep);
+  return <ImagePreloader>{renderStep(currentStep)}</ImagePreloader>;
 };
 
 const renderStep = (currentStep: number) => {

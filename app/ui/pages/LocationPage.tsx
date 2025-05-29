@@ -36,7 +36,6 @@ export const LocationPage = () => {
         width={85}
         height={82}
         className='absolute top-35 right-15 sm:top-47 sm:right-20 w-[85] h-[82]'
-        priority
       />
       <span className='w-[327] h-[138] text-center text-big mt-auto mb-20.75'>
         с. Раковець forest event

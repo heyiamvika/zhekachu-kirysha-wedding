@@ -12,7 +12,6 @@ export const ConfirmedPage = () => {
           width={164}
           height={105}
           className='w-full h-full'
-          priority
         />
       </div>
       <div className='grow px-4 flex flex-col items-center justify-center gap-6 min-w-[288] max-w-[480]'>

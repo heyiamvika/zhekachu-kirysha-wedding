@@ -15,7 +15,6 @@ export const NavigationArrow = ({ direction }: NavigationArrowProps) => {
         alt={direction === 'left' ? 'стрілка вліво' : 'стрілка вправо'}
         width={50}
         height={14}
-        priority
       />
     </button>
   );
