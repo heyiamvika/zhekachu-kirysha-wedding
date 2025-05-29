@@ -7,7 +7,6 @@ import {
   NotFoundPage,
   StartPage,
 } from '@/app/ui/pages';
-import { ImagePreloader } from '@/app/ui/components';
 
 import { useAppStore } from '@/app/lib/hooks';
 import { PAGES } from '@/app/lib/pages';
@@ -22,10 +21,6 @@ import lovebirdsImg from '@/public/lovebirds.webp';
 export const WrapperPage = () => {
   const { currentStep } = useAppStore((state) => state);
 
-  return <ImagePreloader>{renderStep(currentStep)}</ImagePreloader>;
-};
-
-const renderStep = (currentStep: number) => {
   switch (currentStep) {
     case PAGES.START:
       return <StartPage />;

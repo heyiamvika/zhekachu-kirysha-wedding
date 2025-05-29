@@ -1,11 +1,14 @@
 import Image from 'next/image';
 
 import fireworksImg from '@/public/fireworks.webp';
+import { ButtonLink } from '@/app/ui/components';
+
+const TG_LINK = 'https://t.me/+qZfTvNQnFbU1MTZi';
 
 export const ConfirmedPage = () => {
   return (
-    <div className='h-dvh pt-10 pb-15 flex flex-col'>
-      <div className='px-19.5'>
+    <div className='h-dvh pt-10 pb-15 flex flex-col items-center'>
+      <div className='px-19.5 w-full'>
         <Image
           src={fireworksImg}
           alt='Феєрверки'
@@ -20,6 +23,7 @@ export const ConfirmedPage = () => {
           Тепер весілля офіційно на 100% круте 🎉 Чекаємо з нетерпінням!
         </span>
       </div>
+      <ButtonLink href={TG_LINK}>Заходь до нас в чатик</ButtonLink>
     </div>
   );
 };

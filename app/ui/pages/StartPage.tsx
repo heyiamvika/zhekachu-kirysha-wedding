@@ -5,8 +5,9 @@ import Image from 'next/image';
 import { MouseEventHandler, useState } from 'react';
 import { useAppStore } from '@/app/lib/hooks';
 
-import envelopeTopImg from '@/public/envelope-top.svg';
+import envelopeTopImg from '@/public/envelope-top-small.webp';
 import envelopeBottomImg from '@/public/envelope-bottom.webp';
+import whiteArrowImg from '@/public/white-arrow.webp';
 
 export const StartPage = () => {
   const [isParcelOpen, setIsParcelOpen] = useState(false);
@@ -56,7 +57,7 @@ const ClosedParcel = ({
     <>
       <div
         onClick={onOpen}
-        className={clsx('drop-shadow-2xl w-full h-fit absolute top-0 z-10', {
+        className={clsx('drop-shadow-2xl w-full h-[379] absolute top-0 z-10', {
           [`${animationStyles} -translate-y-full`]: isParcelOpen,
         })}
       >
@@ -64,9 +65,10 @@ const ClosedParcel = ({
           src={envelopeTopImg}
           alt='Клапан конверта'
           width={375}
-          height={400}
-          className='w-full object-cover'
+          height={379}
+          className='w-full'
           quality={25}
+          priority
         />
       </div>
       <div
@@ -77,7 +79,7 @@ const ClosedParcel = ({
           }
         )}
       >
-        <Image src={envelopeBottomImg} fill alt='Низ конверта' />
+        <Image src={envelopeBottomImg} fill alt='Низ конверта' priority />
         <span className='text-big w-[375] text-center mb-[102] z-10'>
           {`Привіт, ${guestName}!`}
         </span>
@@ -100,13 +102,21 @@ const OpenBackground = ({
   return (
     <div
       className={clsx(
-        'absolute top-0 w-full h-full text-white text-big flex flex-col items-center text-center py-10 sm:py-20 justify-between bg-black/20',
+        'absolute top-0 w-full h-dvh text-white text-big flex flex-col items-center text-center justify-between bg-black/20',
         { 'animate-fade-in': isParcelOpen }
       )}
       onClick={onScreenClick}
     >
-      <span>Запрошуємо</span>
-      <span className='mb-15'>тебе на наше весілля 31 липня!</span>
+      <span className='w-[307] mt-10 sm:mt-20'>Запрошуємо</span>
+      <div className='flex flex-col mb-15 items-end w-[327]'>
+        <span>тебе на наше весілля 31 липня!</span>
+        <Image
+          src={whiteArrowImg}
+          alt='стрілка вперед'
+          width={50}
+          height={44}
+        />
+      </div>
     </div>
   );
 };

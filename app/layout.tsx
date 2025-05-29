@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { inspiration } from '@/app/ui/fonts';
+import { ImagePreloader } from '@/app/ui/components';
 import '@/app/ui/global.css';
 
 export const metadata: Metadata = {
@@ -21,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en' className={`${inspiration.className} antialiased h-dvh`}>
-      <body>{children}</body>
+      <body>
+        <ImagePreloader>{children}</ImagePreloader>
+      </body>
     </html>
   );
 }

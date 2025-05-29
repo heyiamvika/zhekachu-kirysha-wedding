@@ -7,12 +7,13 @@ import allergiesImg from '@/public/allergies.webp';
 import alcoholImg from '@/public/alcohol.webp';
 import vyshyvankaImg from '@/public/vyshyvanka.webp';
 import lovebirdsImg from '@/public/lovebirds.webp';
-import envelopeTopImg from '@/public/envelope-top.svg';
+import envelopeTopImg from '@/public/envelope-top-small.webp';
 import envelopeBottomImg from '@/public/envelope-bottom.webp';
 import locationImg from '@/public/location-background.webp';
 import kittyImg from '@/public/kitty.webp';
 import arrowPopupImg from '@/public/arrow-popup.svg';
 import fireworksImg from '@/public/fireworks.webp';
+import whiteArrowImg from '@/public/white-arrow.webp';
 
 export const ImagePreloader = ({ children }: PropsWithChildren) => {
   return (
@@ -35,6 +36,13 @@ export const ImagePreloader = ({ children }: PropsWithChildren) => {
           src={envelopeBottomImg}
           alt='Envelope bottom preload'
           fill
+          priority
+        />
+        <Image
+          src={whiteArrowImg}
+          alt='White arrow preload'
+          width={50}
+          height={44}
           priority
         />
         <Image src={locationImg} alt='Location preload' fill priority />
