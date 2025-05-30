@@ -78,16 +78,23 @@ export const FormFieldPage = ({
   return (
     <div>
       <div
-        className='w-full h-dvh flex flex-col px-4 pt-6 pb-8'
+        className='w-full h-dvh flex flex-col px-4 pt-6 pb-8 text-xs sm:text-standard'
         onClick={handleScreenClick}
       >
         <NavigationArrowGroup showNext={showNext} showPrev={showPrev} />
         <div className='flex flex-col items-center justify-center grow'>
           <div className='flex flex-col justify-between items-center min-w-[288] max-w-[450] min-h-[472] max-h-[660] grow'>
-            <span className='text-center py-6.25'>{text}</span>
-            <div className='w-full min-h-[150] max-h-[235] grow px-10'>
-              <div className='relative w-full h-full'>
-                <Image src={imageSrc} alt={text} fill priority key={text} />
+            <span className='text-center'>{text}</span>
+            <div className='w-full grow flex items-center justify-center my-6.25'>
+              <div className='relative w-full h-full min-h-[100] max-h-[235]'>
+                <Image
+                  src={imageSrc}
+                  alt={text}
+                  fill
+                  priority
+                  key={text}
+                  className='object-contain'
+                />
               </div>
             </div>
             <ButtonGroup

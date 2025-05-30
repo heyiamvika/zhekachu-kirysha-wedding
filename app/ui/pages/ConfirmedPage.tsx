@@ -14,10 +14,10 @@ export const ConfirmedPage = () => {
           alt='Феєрверки'
           width={164}
           height={105}
-          className='w-full h-full'
+          className='w-full h-full object-cover'
         />
       </div>
-      <div className='grow px-4 flex flex-col items-center justify-center gap-6 min-w-[288] max-w-[480]'>
+      <div className='grow px-[16] py-[41] flex flex-col items-center justify-center gap-6 min-w-[288] max-w-[480] text-xs sm:text-standard'>
         <span className='text-center'>Єєє!</span>
         <span className='text-center'>
           Тепер весілля офіційно на 100% круте 🎉 Чекаємо з нетерпінням!

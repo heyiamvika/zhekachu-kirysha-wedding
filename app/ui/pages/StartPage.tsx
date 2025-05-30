@@ -80,7 +80,7 @@ const ClosedParcel = ({
         )}
       >
         <Image src={envelopeBottomImg} fill alt='Низ конверта' priority />
-        <span className='text-big w-[375] text-center mb-[102] z-10'>
+        <span className='text-lg w-[375] text-center mb-[102] z-10'>
           {`Привіт, ${guestName}!`}
         </span>
       </div>
@@ -108,13 +108,16 @@ const OpenBackground = ({
       onClick={onScreenClick}
     >
       <span className='w-[307] mt-10 sm:mt-20'>Запрошуємо</span>
-      <div className='flex flex-col mb-15 items-end w-[327]'>
-        <span>тебе на наше весілля 31 липня!</span>
+      <div className='flex flex-col mb-15 items-center w-full'>
+        <span className='max-w-[327]'>
+          тебе на наше весілля <br /> 31 липня!
+        </span>
         <Image
           src={whiteArrowImg}
           alt='стрілка вперед'
           width={50}
           height={44}
+          className='self-end mr-[51]'
         />
       </div>
     </div>

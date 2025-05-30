@@ -30,7 +30,7 @@ export const LocationPage = () => {
     >
       <Image src={locationImage} fill alt='Локація' className='-z-10' />
       <NavigationArrowGroup showNext />
-      <span className='inline-block -rotate-[11.757deg] text-big absolute left-6 sm:left-10 top-24.25 sm:top-40'>
+      <span className='inline-block -rotate-[11.757deg] text-big absolute top-[97] left-[24]'>
         локація
       </span>
       <Image
@@ -38,9 +38,9 @@ export const LocationPage = () => {
         alt='стрілка вниз'
         width={85}
         height={82}
-        className='absolute top-35 right-15 sm:top-47 sm:right-20 w-[85] h-[82]'
+        className='absolute top-[140] right-[60]'
       />
-      <span className='w-[327] h-[138] text-center text-big mt-auto mb-20.75'>
+      <span className='w-[327] h-[138] text-center text-big mt-auto sm:mb-[83]'>
         с. Раковець forest event
       </span>
     </div>

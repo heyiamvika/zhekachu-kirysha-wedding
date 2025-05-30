@@ -11,7 +11,7 @@ export const Button = ({ value, isSelected, onClick }: ButtonProps) => {
   return (
     <button
       className={clsx(
-        `min-w-[200] max-w-fit h-10 px-4 flex justify-center items-center border rounded-2xl text-small active:border-white active:bg-foreground active:text-white`,
+        `min-w-[200] max-w-fit h-10 px-4 flex justify-center items-center border rounded-2xl text-button active:border-white active:bg-foreground active:text-white`,
         {
           'border-white bg-foreground text-white': isSelected,
         }
