@@ -25,24 +25,30 @@ export const LocationPage = () => {
 
   return (
     <div
-      className='w-full h-dvh p-6 relative flex flex-col items-center'
+      className='w-full h-dvh p-6 flex flex-col items-center'
       onClick={handleScreenClick}
     >
       <Image src={locationImage} fill alt='Локація' className='-z-10' />
       <NavigationArrowGroup showNext />
-      <span className='inline-block -rotate-[11.757deg] text-big absolute top-[97] left-[24]'>
-        локація
-      </span>
-      <Image
-        src={arrowDownImage}
-        alt='стрілка вниз'
-        width={85}
-        height={82}
-        className='absolute top-[140] right-[60]'
-      />
-      <span className='w-[327] h-[138] text-center text-big mt-auto sm:mb-[83]'>
-        с. Раковець forest event
-      </span>
+      <div className='grow flex items-center justify-center'>
+        <div className='flex flex-col justify-between items-center w-full h-[90%]'>
+          <div className='h-[124] w-[292] max-w-full flex justify-between'>
+            <span className='-rotate-[11.757deg] text-big self-start'>
+              локація
+            </span>
+            <Image
+              src={arrowDownImage}
+              alt='стрілка вниз'
+              width={85}
+              height={82}
+              className='w-[85] h-[82] self-end'
+            />
+          </div>
+          <span className='w-[327] h-[138] text-center text-big'>
+            с. Раковець forest event
+          </span>
+        </div>
+      </div>
     </div>
   );
 };

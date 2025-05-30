@@ -80,7 +80,7 @@ const ClosedParcel = ({
         )}
       >
         <Image src={envelopeBottomImg} fill alt='Низ конверта' priority />
-        <span className='text-lg w-[375] text-center mb-[102] z-10'>
+        <span className='text-lg leading-20 sm:leading-22.5 w-[375] text-center z-10 mb-[20%]'>
           {`Привіт, ${guestName}!`}
         </span>
       </div>
@@ -102,7 +102,7 @@ const OpenBackground = ({
   return (
     <div
       className={clsx(
-        'absolute top-0 w-full h-dvh text-white text-big flex flex-col items-center text-center justify-between bg-black/20',
+        'absolute top-0 w-full h-dvh text-white text-big flex flex-col items-center text-center justify-between bg-black/20 leading-big',
         { 'animate-fade-in': isParcelOpen }
       )}
       onClick={onScreenClick}
