@@ -14,7 +14,7 @@ export const ConfirmedPage = () => {
           alt='Феєрверки'
           width={164}
           height={105}
-          className='w-full h-full object-cover'
+          className='w-full h-full object-contain'
         />
       </div>
       <div className='grow px-[16] py-[41] flex flex-col items-center justify-center gap-6 min-w-[288] max-w-[480] text-xs sm:text-standard'>
