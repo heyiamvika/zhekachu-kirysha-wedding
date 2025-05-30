@@ -11,10 +11,11 @@
 }
 
 @theme {
-  --breakpoint-sm: 321px;
+  --breakpoint-sm: 376px;
   --color-foreground: #3E4D32;
   --text-lg: 60px;
   --text-big: 48px;
+  --leading-big: 60px;
   --text-standard: 36px;
   --text-sm: 34px;
   --text-xs: 32px;
