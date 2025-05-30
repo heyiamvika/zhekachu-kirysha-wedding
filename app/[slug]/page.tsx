@@ -29,7 +29,11 @@ export default async function Page({
   }
 
   if (!guest) {
-    return <NotFoundPage />;
+    return (
+      <SlugProvider>
+        <NotFoundPage />;
+      </SlugProvider>
+    );
   }
 
   return (
