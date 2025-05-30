@@ -31,11 +31,9 @@ export const LocationPage = () => {
       <Image src={locationImage} fill alt='Локація' className='-z-10' />
       <NavigationArrowGroup showNext />
       <div className='grow flex items-center justify-center'>
-        <div className='flex flex-col justify-between items-center w-full h-[90%]'>
+        <div className='flex flex-col justify-between items-center w-full h-[90%] text-big leading-big'>
           <div className='h-[124] w-[292] max-w-full flex justify-between'>
-            <span className='-rotate-[11.757deg] text-big self-start'>
-              локація
-            </span>
+            <span className='-rotate-[11.757deg] self-start'>локація</span>
             <Image
               src={arrowDownImage}
               alt='стрілка вниз'
@@ -44,7 +42,7 @@ export const LocationPage = () => {
               className='w-[85] h-[82] self-end'
             />
           </div>
-          <span className='w-[327] h-[138] text-center text-big'>
+          <span className='w-[327] h-[138] text-center'>
             с. Раковець forest event
           </span>
         </div>

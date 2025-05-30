@@ -19,6 +19,7 @@
   --text-standard: 36px;
   --text-sm: 34px;
   --text-xs: 32px;
+  --leading-xs: 40px;
   --text-button: 24px;
   --animate-fade-in: fade-in 4s ease-out forwards;
 }

@@ -3,7 +3,7 @@ import { Button } from './Button';
 import { Buttons } from '@/app/lib/definitions';
 
 type ButtonGroupProps = {
-  buttons?: Buttons;
+  buttons: Buttons;
   selectedValue: string | null;
   onSelect: (value: string) => void;
 };

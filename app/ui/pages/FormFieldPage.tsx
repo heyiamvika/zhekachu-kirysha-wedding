@@ -78,14 +78,14 @@ export const FormFieldPage = ({
   return (
     <div>
       <div
-        className='w-full h-dvh flex flex-col px-4 pt-6 pb-8 text-xs sm:text-standard'
+        className='w-full h-dvh flex flex-col px-4 pt-6 pb-8 text-xs leading-xs sm:text-standard'
         onClick={handleScreenClick}
       >
         <NavigationArrowGroup showNext={showNext} showPrev={showPrev} />
         <div className='flex flex-col items-center justify-center grow'>
           <div className='flex flex-col justify-between items-center min-w-[288] max-w-[450] min-h-[472] max-h-[660] grow'>
             <span className='text-center'>{text}</span>
-            <div className='w-full grow flex items-center justify-center my-6.25'>
+            <div className='w-full grow flex items-center justify-center p-[16]'>
               <div className='relative w-full h-full min-h-[100] max-h-[235]'>
                 <Image
                   src={imageSrc}
@@ -97,11 +97,13 @@ export const FormFieldPage = ({
                 />
               </div>
             </div>
-            <ButtonGroup
-              buttons={buttons}
-              onSelect={handleBtnClick}
-              selectedValue={selectedValue}
-            />
+            {buttons && (
+              <ButtonGroup
+                buttons={buttons}
+                onSelect={handleBtnClick}
+                selectedValue={selectedValue}
+              />
+            )}
           </div>
         </div>
       </div>
